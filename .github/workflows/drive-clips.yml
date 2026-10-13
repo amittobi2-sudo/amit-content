@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install ffmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q -U yt-dlp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q -U yt-dlp gallery-dl
       - name: Process
         run: |
           set -e
@@ -21,6 +21,17 @@ jobs:
           # lines after the first: "<mode> <driveId> [start] [dur]"  mode = sheet | cut
           tail -n +2 clips/request.txt | while read -r MODE ID S D; do
             [ -z "$ID" ] && continue
+            if [ "$MODE" = "get" ]; then
+              curl -sL --retry 3 -o "out/get_$ID" "$S" || true
+              echo "$ID get $(stat -c %s out/get_$ID 2>/dev/null)" >> out/log.txt; continue
+            fi
+            if [ "$MODE" = "igp" ]; then
+              mkdir -p "out/igp_$ID"; gallery-dl -q -D "out/igp_$ID" "https://www.instagram.com/p/$ID/" </dev/null || true
+              n=$(ls out/igp_$ID 2>/dev/null | wc -l)
+              if [ "$n" = "0" ]; then yt-dlp -q --no-warnings -o "out/igp_$ID/%(autonumber)s.%(ext)s" "https://www.instagram.com/p/$ID/" </dev/null || true; n=$(ls out/igp_$ID | wc -l); fi
+              (cd out/igp_$ID && i=0 && for f in *; do i=$((i+1)); mv "$f" "../igp_${ID}_$i.${f##*.}"; done); rmdir out/igp_$ID 2>/dev/null
+              echo "$ID igp files=$n" >> out/log.txt; continue
+            fi
             if [ "$MODE" = "ig" ]; then
               yt-dlp -q --no-warnings -f "bv*+ba/b" --merge-output-format mp4 -o "out/ig_$ID.mp4" "https://www.instagram.com/reel/$ID/" </dev/null || true
               if [ -f "out/ig_$ID.mp4" ]; then echo "$ID ig ok $(ffprobe -v error -show_entries format=duration -of csv=p=0 out/ig_$ID.mp4)" >> out/log.txt; else echo "$ID ig FAILED" >> out/log.txt; fi
