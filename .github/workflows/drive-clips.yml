@@ -28,11 +28,11 @@ jobs:
             if ! ffprobe -v error "$f" >/dev/null 2>&1; then echo "$ID FAILED" >> out/log.txt; continue; fi
             DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
             if [ "$MODE" = "sheet" ]; then
-              n=0; for p in 0.1 0.3 0.5 0.7 0.9; do n=$((n+1)); t=$(python3 -c "print($DUR*$p)"); ffmpeg -v error -y -ss $t -i "$f" -frames:v 1 -vf "scale=-2:360" work/${ID}_$n.jpg; done
-              ffmpeg -v error -y -i work/${ID}_1.jpg -i work/${ID}_2.jpg -i work/${ID}_3.jpg -i work/${ID}_4.jpg -i work/${ID}_5.jpg -filter_complex "[0][1][2][3][4]hstack=5" -frames:v 1 -q:v 5 "out/sheet_$ID.jpg"
+              n=0; for p in 0.1 0.3 0.5 0.7 0.9; do n=$((n+1)); t=$(python3 -c "print($DUR*$p)"); ffmpeg -nostdin -v error -y -ss $t -i "$f" -frames:v 1 -vf "scale=-2:360" work/${ID}_$n.jpg; done
+              ffmpeg -nostdin -v error -y -i work/${ID}_1.jpg -i work/${ID}_2.jpg -i work/${ID}_3.jpg -i work/${ID}_4.jpg -i work/${ID}_5.jpg -filter_complex "[0][1][2][3][4]hstack=5" -frames:v 1 -q:v 5 "out/sheet_$ID.jpg"
               echo "$ID dur=$DUR" >> out/log.txt
             else
-              ffmpeg -v error -y -ss ${S:-0} -t ${D:-8} -i "$f" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30" -c:v libx264 -preset medium -crf 23 -an -movflags +faststart "out/cut_${ID}_${S:-0}.mp4"
+              ffmpeg -nostdin -v error -y -ss ${S:-0} -t ${D:-8} -i "$f" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30" -c:v libx264 -preset medium -crf 23 -an -movflags +faststart "out/cut_${ID}_${S:-0}.mp4"
               echo "$ID cut ${S:-0}+${D:-8} dur=$DUR" >> out/log.txt
             fi
           done
