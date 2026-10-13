@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://amit-tobi.onrender.com/</loc><lastmod>2026-10-13</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://amit-tobi.onrender.com/</loc><lastmod>2026-10-13</lastmod><xhtml:link rel="alternate" hreflang="he" href="https://amit-tobi.onrender.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://amit-tobi.onrender.com/en/"/></url>
   <url><loc>https://amit-tobi.onrender.com/about/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/prakti/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/results/</loc><lastmod>2026-10-13</lastmod></url>
@@ -9,6 +9,7 @@
   <url><loc>https://amit-tobi.onrender.com/businesses/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/businesses/ameat/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/businesses/luciana/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/businesses/breezy/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/body-language/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/lectures/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/faq/</loc><lastmod>2026-10-13</lastmod></url>
@@ -20,6 +21,25 @@
   <url><loc>https://amit-tobi.onrender.com/articles/hefsed-shel-2-milyon/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/articles/motivatzia-hasrat-erech/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/articles/shivuk-leaskei-sherut/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/giyus-oved-rishon/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/nihul-ovdim-150/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/tamchur-asakei-sherut/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/tazrim-ve-revach-vehefsed/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/me-35-le-50-elef/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/masa-umatan-lekochot-sapakim/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/nihul-zman-baal-esek/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/mi-yaad-le-bitzua/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/kriat-tavei-panim-beasakim/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/safat-guf-bereayon-avoda/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/mikro-habaot-vetonatzia-bemechira/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/shivuk-beinstagram-leaskei-sherut/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/mutzar-knisa-daf-nechita-webinar/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/articles/tzava-profil-97-yazmut/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://amit-tobi.onrender.com/articles/</loc><lastmod>2026-10-13</lastmod></url>
-  <url><loc>https://amit-tobi.onrender.com/en/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/yoetz-iski/yoetz-iski-le-maamnei-kosher/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/yoetz-iski/yoetz-iski-le-iskei-ochel-ve-eruim/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/yoetz-iski/yoetz-iski-le-yoatzim-u-metaplim/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/yoetz-iski/yoetz-iski-le-sochnuyot-digital/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/yoetz-iski/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://amit-tobi.onrender.com/en/</loc><lastmod>2026-10-13</lastmod><xhtml:link rel="alternate" hreflang="he" href="https://amit-tobi.onrender.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://amit-tobi.onrender.com/en/"/></url>
 </urlset>
