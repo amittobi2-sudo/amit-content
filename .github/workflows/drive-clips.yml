@@ -1,53 +1,35 @@
 name: drive-clips
 on:
   push:
-    branches: [main]
-    paths: ['clips/request.txt']
+    paths: ['requests/drive.txt']
 permissions:
   contents: write
 jobs:
-  run:
+  fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
-      - name: Install ffmpeg
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
-      - name: Process
+      - name: Download and compress Drive videos
         run: |
-          set -e
-          mkdir -p work out
-          REQ=$(head -1 clips/request.txt | tr -d '\r')
-          # lines after the first: "<mode> <driveId> [start] [dur]"  mode = sheet | cut
-          tail -n +2 clips/request.txt | while read -r MODE ID S D; do
-            [ -z "$ID" ] && continue
-            f="work/$ID.mp4"
-            if [ ! -f "$f" ]; then
-              curl -sL --retry 3 -o "$f" "https://drive.usercontent.google.com/download?id=$ID&export=download&confirm=t" || true
-            fi
-            if ! ffprobe -v error "$f" >/dev/null 2>&1; then echo "$ID FAILED" >> out/log.txt; continue; fi
-            DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
-            if [ "$MODE" = "sheet" ]; then
-              n=0; for p in 0.1 0.3 0.5 0.7 0.9; do n=$((n+1)); t=$(python3 -c "print($DUR*$p)"); ffmpeg -v error -y -ss $t -i "$f" -frames:v 1 -vf "scale=-2:360" work/${ID}_$n.jpg; done
-              ffmpeg -v error -y -i work/${ID}_1.jpg -i work/${ID}_2.jpg -i work/${ID}_3.jpg -i work/${ID}_4.jpg -i work/${ID}_5.jpg -filter_complex "[0][1][2][3][4]hstack=5" -frames:v 1 -q:v 5 "out/sheet_$ID.jpg"
-              echo "$ID dur=$DUR" >> out/log.txt
-            else
-              ffmpeg -v error -y -ss ${S:-0} -t ${D:-8} -i "$f" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30" -c:v libx264 -preset medium -crf 23 -an -movflags +faststart "out/cut_${ID}_${S:-0}.mp4"
-              echo "$ID cut ${S:-0}+${D:-8} dur=$DUR" >> out/log.txt
-            fi
-          done
-          # encrypt everything with a random key, key encrypted to the public key
-          mkdir -p enc/$REQ
-          openssl rand -out k.bin 32
-          openssl pkeyutl -encrypt -pubin -inkey .github/clips_pub.pem -in k.bin -out enc/$REQ/key.enc
-          for x in out/*; do openssl enc -aes-256-cbc -pbkdf2 -salt -pass file:k.bin -in "$x" -out "enc/$REQ/$(basename $x).enc"; done
-          rm -f k.bin
-      - name: Commit results to clips-out branch
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg >/dev/null
+          pip -q install gdown
+          mkdir -p clips
+          while read -r id start dur name; do
+            [ -z "$id" ] && continue
+            case "$id" in \#*) continue;; esac
+            [ -f "clips/$name.mp4" ] && continue
+            gdown -q "https://drive.google.com/uc?id=$id" -O /tmp/src.mp4 || { echo "fail $id"; continue; }
+            ffmpeg -y -loglevel error -ss "${start:-0}" -t "${dur:-20}" -i /tmp/src.mp4 \
+              -vf "scale='if(gt(iw,ih),-2,1080)':'if(gt(iw,ih),1080,-2)',fps=30" \
+              -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 96k -movflags +faststart "clips/$name.mp4"
+            ffmpeg -y -loglevel error -ss 1 -i "clips/$name.mp4" -frames:v 1 -vf scale=360:-1 "clips/$name.jpg"
+            rm -f /tmp/src.mp4
+          done < requests/drive.txt
+          ls -la clips
+      - name: Commit
         run: |
-          REQ=$(head -1 clips/request.txt | tr -d '\r')
-          git config user.name "clips-bot"; git config user.email "clips-bot@users.noreply.github.com"
-          mv enc /tmp/enc
-          git fetch origin clips-out || true
-          if git rev-parse --verify origin/clips-out >/dev/null 2>&1; then git checkout -B clips-out origin/clips-out; else git checkout --orphan clips-out; git rm -rf -q . ; fi
-          mkdir -p enc && cp -r /tmp/enc/* enc/
-          git add enc && git commit -q -m "clips $REQ" && git push -q origin clips-out
+          git config user.name "drive-clips-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add clips
+          git commit -m "Add clips from Drive" || echo "nothing to commit"
+          git push
