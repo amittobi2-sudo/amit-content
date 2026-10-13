@@ -27,9 +27,10 @@ jobs:
             fi
             if [ "$MODE" = "igp" ]; then
               mkdir -p "out/igp_$ID"; gallery-dl -q -D "out/igp_$ID" "https://www.instagram.com/p/$ID/" </dev/null || true
-              n=$(ls out/igp_$ID 2>/dev/null | wc -l)
-              if [ "$n" = "0" ]; then yt-dlp -q --no-warnings -o "out/igp_$ID/%(autonumber)s.%(ext)s" "https://www.instagram.com/p/$ID/" </dev/null || true; n=$(ls out/igp_$ID | wc -l); fi
-              (cd out/igp_$ID && i=0 && for f in *; do i=$((i+1)); mv "$f" "../igp_${ID}_$i.${f##*.}"; done); rmdir out/igp_$ID 2>/dev/null
+              n=$(ls out/igp_$ID 2>/dev/null | wc -l || true)
+              if [ "$n" = "0" ]; then yt-dlp -q --no-warnings -o "out/igp_$ID/%(autonumber)s.%(ext)s" "https://www.instagram.com/p/$ID/" </dev/null || true; n=$(ls out/igp_$ID 2>/dev/null | wc -l || true); fi
+              i=0; for f in out/igp_$ID/*; do [ -f "$f" ] || continue; i=$((i+1)); mv "$f" "out/igp_${ID}_$i.${f##*.}"; done
+              rmdir out/igp_$ID 2>/dev/null || true
               echo "$ID igp files=$n" >> out/log.txt; continue
             fi
             if [ "$MODE" = "ig" ]; then
