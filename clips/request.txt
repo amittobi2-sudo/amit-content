@@ -1,4 +1,27 @@
-req014
-get pp_css.txt https://fonts.googleapis.com/css2?family=Playpen+Sans+Hebrew:wght@400;600
-get pp1.ttf https://github.com/google/fonts/raw/main/ofl/playpensanshebrew/PlaypenSansHebrew%5Bwght%5D.ttf
-get pp2.ttf https://github.com/TypeTogether/Playpen-Sans/raw/main/fonts/variable/PlaypenSansHebrew%5Bwght%5D.ttf
+req015
+get d_1h2on122h0Ugom_SvlI3Z-jofuDq0p83k.jpg https://drive.usercontent.google.com/download?id=1h2on122h0Ugom_SvlI3Z-jofuDq0p83k&export=download&confirm=t
+get d_1AA_TPa5Q3Qyjajm85x4BKaiRzodni0f6.jpg https://drive.usercontent.google.com/download?id=1AA_TPa5Q3Qyjajm85x4BKaiRzodni0f6&export=download&confirm=t
+get d_1GHZiNuIUYDQsBjhV8EcDz4o46_jYoTBZ.jpg https://drive.usercontent.google.com/download?id=1GHZiNuIUYDQsBjhV8EcDz4o46_jYoTBZ&export=download&confirm=t
+get d_1s8GWGZGopdI7TEsnNS0pCMqbPzeGyCn-.jpg https://drive.usercontent.google.com/download?id=1s8GWGZGopdI7TEsnNS0pCMqbPzeGyCn-&export=download&confirm=t
+get d_1aY0Ei9xz3x9tsL8Wt6zHXT_tjhhy3UKE.jpg https://drive.usercontent.google.com/download?id=1aY0Ei9xz3x9tsL8Wt6zHXT_tjhhy3UKE&export=download&confirm=t
+get d_1BEAGopd61WV2-0DEKMNtcWxEPotN4_Nq.jpg https://drive.usercontent.google.com/download?id=1BEAGopd61WV2-0DEKMNtcWxEPotN4_Nq&export=download&confirm=t
+get d_16ZLdWSfaeK8cfI4Dp3B9dTDjAWWcGiMK.jpg https://drive.usercontent.google.com/download?id=16ZLdWSfaeK8cfI4Dp3B9dTDjAWWcGiMK&export=download&confirm=t
+get d_1gleIMT5fAGbVYis7xcRsgsqq65-qpcNQ.jpg https://drive.usercontent.google.com/download?id=1gleIMT5fAGbVYis7xcRsgsqq65-qpcNQ&export=download&confirm=t
+get d_1bnOUUNNuuNH5hcoLCQit04y4X73rPYhI.jpg https://drive.usercontent.google.com/download?id=1bnOUUNNuuNH5hcoLCQit04y4X73rPYhI&export=download&confirm=t
+get d_1ilxdaDHCbB-k8mZ2KjssteZbZTPyBMOV.jpg https://drive.usercontent.google.com/download?id=1ilxdaDHCbB-k8mZ2KjssteZbZTPyBMOV&export=download&confirm=t
+get d_1Mw2mbqPVa3qYWWVercmUPHjKUrDqQEcY.jpg https://drive.usercontent.google.com/download?id=1Mw2mbqPVa3qYWWVercmUPHjKUrDqQEcY&export=download&confirm=t
+get d_1yDRjQEnV-2VgOFHZsnBRGewHVnIGxxT4.jpg https://drive.usercontent.google.com/download?id=1yDRjQEnV-2VgOFHZsnBRGewHVnIGxxT4&export=download&confirm=t
+get d_1UC-VMGyJA4NWui41_AZlvqmuFmNxupOq.jpg https://drive.usercontent.google.com/download?id=1UC-VMGyJA4NWui41_AZlvqmuFmNxupOq&export=download&confirm=t
+get d_1LKMkjNa8EllT02psTaPUMlLKbIMI7KUe.jpg https://drive.usercontent.google.com/download?id=1LKMkjNa8EllT02psTaPUMlLKbIMI7KUe&export=download&confirm=t
+get d_1t0ITuSv3z9YZyjuODly9_w1vgKvq95sp.jpg https://drive.usercontent.google.com/download?id=1t0ITuSv3z9YZyjuODly9_w1vgKvq95sp&export=download&confirm=t
+get d_1mC8eqSbnd6c3esOGbGR4412RSS3XPg5W.jpg https://drive.usercontent.google.com/download?id=1mC8eqSbnd6c3esOGbGR4412RSS3XPg5W&export=download&confirm=t
+get d_1otqEw-mG-JWhvzi5q9m9ggYgbXnHJrCX.jpg https://drive.usercontent.google.com/download?id=1otqEw-mG-JWhvzi5q9m9ggYgbXnHJrCX&export=download&confirm=t
+get d_11aY_Bf3ueugrd4WAYddhuDZu-dMj4tVx.jpg https://drive.usercontent.google.com/download?id=11aY_Bf3ueugrd4WAYddhuDZu-dMj4tVx&export=download&confirm=t
+get d_1Y0aa73XGGQoFoxxGEgC2o34mXO_IyP5z.jpg https://drive.usercontent.google.com/download?id=1Y0aa73XGGQoFoxxGEgC2o34mXO_IyP5z&export=download&confirm=t
+get d_1Rjti2FZUF91c_4RGhn8Ou-z_KIo9JuEJ.jpg https://drive.usercontent.google.com/download?id=1Rjti2FZUF91c_4RGhn8Ou-z_KIo9JuEJ&export=download&confirm=t
+get d_1yrA5IDacakoVKXwdXGuKuPAp8RwJBwEa.jpg https://drive.usercontent.google.com/download?id=1yrA5IDacakoVKXwdXGuKuPAp8RwJBwEa&export=download&confirm=t
+get d_12wFR_fqNzpRHGsKi59_ADhfjRDK_c8hi.jpg https://drive.usercontent.google.com/download?id=12wFR_fqNzpRHGsKi59_ADhfjRDK_c8hi&export=download&confirm=t
+get d_1IXxGZo3iVKZTZnoziWntYflP2FLLpr5y.jpg https://drive.usercontent.google.com/download?id=1IXxGZo3iVKZTZnoziWntYflP2FLLpr5y&export=download&confirm=t
+get d_1gvH5mioG2-hY_oiqrSJZo7Bp6wwLJe5j.jpg https://drive.usercontent.google.com/download?id=1gvH5mioG2-hY_oiqrSJZo7Bp6wwLJe5j&export=download&confirm=t
+get d_1j08HsUHV4VOvAZUvD6x9m9GDuL9i18gF.jpg https://drive.usercontent.google.com/download?id=1j08HsUHV4VOvAZUvD6x9m9GDuL9i18gF&export=download&confirm=t
+get d_10EDp-J30Wy24a5IT-3yZlwkd3KzciBgt.jpg https://drive.usercontent.google.com/download?id=10EDp-J30Wy24a5IT-3yZlwkd3KzciBgt&export=download&confirm=t
