@@ -265,6 +265,8 @@ for _t in V2P.TOPICS:
     _p = "/free/"+_t["slug"]+"/"
     page(_p, _t["title"], _t["desc"], _b, crumbs=[("/","עמית טובי"),("/free/","תכנים חינם"),(_p,_t["name"])],
          schema_extra=[_fl,{"@type":"ItemList","name":_t["name"],"itemListElement":[{"@type":"ListItem","position":i+1,"url":BASE+"/articles/"+sl+"/"} for i,sl in enumerate(_t["arts"])]}])
+_cb,_cl = V2P.course(lead)
+page("/course/", "קורס היזמות של עמית טובי | 12 שיעורים מרעיון ללקוחות", "קורס היזמות שעמית טובי לימד ב-2025 במועדון היזמים: 12 שיעורים על רעיון, שיטה, הצעה, שיווק, מכירה, שירות והפניות, ותוצאות משתתפים.", _cb, crumbs=H("/course/","קורס היזמות"), schema_extra=[_cl])
 page("/press/", "ערכת מדיה: עמית טובי | ביו, תמונות ועובדות", "ערכת המדיה של עמית טובי: ביו קצר וארוך בעברית ובאנגלית, תמונות ברזולוציה גבוהה ועובדות לעיתונאים, פודקאסטים ומארגני אירועים.",
      V2P.press(lead), crumbs=H("/press/","ערכת מדיה"))
 

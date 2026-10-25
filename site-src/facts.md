@@ -59,3 +59,4 @@ Sales: help client define the problem, what it costs, why not solved yet, see th
 - Studio photo shoot (2026) incl. a photo of the three Prakti founders together.
 - Family photos received: do NOT publish (privacy, especially the baby). Keep "married, father" only.
 - Public contact email for lectures/press (Amit, Oct 25 2026): amittobi@gmail.com. TV "גלית ויואב" year possibly 2022, unconfirmed: do not publish the year.
+- Source (Oct 25 2026): Amit's own Prakti portal lesson scripts (Drive doc "תוכן - פורטל פרקטי", sections "טובי - ..."): marketing sources, Google, landing pages/lead magnet, copywriting, funnels, webinar, Instagram, marketing metrics, business development/optimization/scale. Quotes from these are his words and may be used.

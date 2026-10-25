@@ -20,7 +20,7 @@ TOPICS = [
   "desc":"עמית טובי על פסיכולוגיה שיווקית לעסקי שירות: למה אנשים קונים, בידול, תמחור ומסר. מדריכים חינם מניסיון של 10+ עסקים.",
   "h1":"פסיכולוגיה שיווקית","sub":"שיווק מתחיל מלהבין למה בן אדם קונה. מדריכים חינם לבעלי עסקי שירות.",
   "intro":"<p>הקמתי יותר מ-10 עסקים, וברובם הטעות הייתה אותה טעות: דיברתי על מה שאני מוכר, ולא על מה שהלקוח מרגיש. \"שיווק מתחיל מלהבין למה בן אדם קונה.\"</p><p>כאן ריכזתי את מה שאני מלמד על מסר, בידול ותמחור. \"בידול נולד מבעיה ספציפית או מקהל ספציפי.\" כשאתה מדבר לכולם, אף אחד לא מרגיש שאתה מדבר אליו.</p>",
-  "arts":["shivuk-leaskei-sherut","tamchur-asakei-sherut","me-isuk-le-esek","mahzor-ze-ego","perfektzionizm-baesek"],
+  "arts":["mekorot-shivuk","kopiraiting-leaskei-sherut","shivuk-leaskei-sherut","tamchur-asakei-sherut","me-isuk-le-esek","mahzor-ze-ego","perfektzionizm-baesek"],
   "more":[("/results/","תוצאות של לקוחות שיישמו את זה")],
   "faq":[("מה זה פסיכולוגיה שיווקית בעסק קטן?","להבין מה הלקוח מרגיש לפני שהוא קונה: מה כואב לו, כמה זה עולה לו, ולמה הוא עוד לא פתר את זה. משם בונים הצעה ומסר."),
          ("למה כל כך חשוב לבחור קהל ספציפי?","כי בידול נולד מבעיה ספציפית או מקהל ספציפי. מסר שמדבר לכולם לא נוגע באף אחד.")]},
@@ -36,7 +36,7 @@ TOPICS = [
   "desc":"עמית טובי על אינסטגרם לעסקי שירות: ביו, תוכן, הנעה לפעולה ומוצר כניסה שהופכים עוקבים ללקוחות. מדריכים חינם.",
   "h1":"עמוד אינסטגרם","sub":"עוקבים זה נחמד. לקוחות זה עסק. איך הופכים עמוד אינסטגרם למקור לידים.",
   "intro":"<p>אינסטגרם הוא לא המטרה. הוא הדרך של הלקוח להכיר אותך, לסמוך עליך ולעשות צעד ראשון. בלי מסר ברור ובלי צעד הבא, גם הרבה עוקבים לא מביאים כסף.</p><p>אופק, משתתף בקורס שלי, עלה ביום אחד מ-570 ל-645 עוקבים וסגר לקוח לפיילוט. כאן ריכזתי את מה שאני מלמד על ביו, תוכן והנעה לפעולה.</p>",
-  "arts":["shivuk-beinstagram-leaskei-sherut","mutzar-knisa-daf-nechita-webinar","shivuk-leaskei-sherut"],
+  "arts":["shivuk-beinstagram-leaskei-sherut","kopiraiting-leaskei-sherut","mekorot-shivuk","mutzar-knisa-daf-nechita-webinar"],
   "more":[(IG,"האינסטגרם שלי: @amit_tobi_")],
   "faq":[("כמה עוקבים צריך כדי למכור באינסטגרם?","פחות ממה שנדמה. מה שקובע הוא מסר ברור לקהל ספציפי וצעד הבא פשוט, לא מספר העוקבים."),
          ("מה לשים בביו של עסק שירות?","למי אתה עוזר, באיזו בעיה, ומה הצעד הבא: מוצר כניסה, פגישה או הודעה.")]},
@@ -44,7 +44,7 @@ TOPICS = [
   "desc":"עמית טובי על מוצר פיתיון (מוצר כניסה), דף נחיתה ווובינר: המשפך שמביא לידים כל שבוע לעסקי שירות. מדריכים חינם.",
   "h1":"מוצר פיתיון","sub":"הצעד הראשון שהלקוח עושה איתך, בלי סיכון. והמשפך שמביא לידים כל שבוע.",
   "intro":"<p>בשיטת 360° שלנו בפרקטי, מוצר כניסה הוא שלב קבוע: משהו קטן, חינמי או זול, שפותר בעיה אחת אמיתית ומכניס את הלקוח למערכת שלך. \"אם בכל חודש אתה מתחיל מאפס, אין לך מערכת.\"</p><p>כאן כל מה שכתבתי על מוצר כניסה, דף נחיתה ווובינר, ואיך מחברים אותם למכירה.</p>",
-  "arts":["mutzar-knisa-daf-nechita-webinar","shivuk-leaskei-sherut","mi-yaad-le-bitzua"],
+  "arts":["mutzar-knisa-daf-nechita-webinar","mashpech-shivuk","shivuk-begoogle-leaskei-sherut","madadei-shivuk"],
   "more":[("/prakti/","שיטת 360° בפרקטי")],
   "faq":[("מה זה מוצר פיתיון?","מוצר כניסה: משהו קטן, חינמי או זול, שפותר בעיה אחת אמיתית ובונה אמון לפני המכירה הגדולה."),
          ("מה ההבדל בין מוצר פיתיון להנחה?","הנחה מורידה את הערך של המוצר הראשי. מוצר פיתיון נותן ערך נפרד, ומכין את הלקוח להחלטה הבאה.")]},
@@ -52,7 +52,7 @@ TOPICS = [
   "desc":"עמית טובי על ניהול עובדים, גיוס, תזרים מזומנים, שותפויות וניהול זמן. מדריכים חינם מניסיון של 150+ עובדים ו-10+ עסקים.",
   "h1":"ניהול, כסף וצמיחה","sub":"מה למדתי מ-150 עובדים, 10 עסקים ומסעדה של כמעט 2 מיליון.",
   "intro":"<p>\"מחזור זה אגו. רווח הוא עסק.\" את המשפט הזה למדתי בדרך הקשה, בגלידרייה שלא שרדה את הקורונה ובמסעדה שנמכרה בכמה מאות אלפים אחרי השקעה של כמעט 2 מיליון.</p><p>כאן ריכזתי את מה שאני מלמד על עובדים, גיוס, תזרים, שותפויות וזמן.</p>",
-  "arts":["nihul-ovdim-150","giyus-oved-rishon","tazrim-ve-revach-vehefsed","eich-bohrim-shutaf","nihul-zman-baal-esek","hefsed-shel-2-milyon","taoyot-bepticha-shel-esek-rishon","motivatzia-hasrat-erech","tzava-profil-97-yazmut"],
+  "arts":["pituach-iski-veskeil","madadei-shivuk","nihul-ovdim-150","giyus-oved-rishon","tazrim-ve-revach-vehefsed","eich-bohrim-shutaf","nihul-zman-baal-esek","hefsed-shel-2-milyon","taoyot-bepticha-shel-esek-rishon","motivatzia-hasrat-erech","tzava-profil-97-yazmut"],
   "more":[("/businesses/","העסקים שלי")],
   "faq":[("מתי נכון לגייס עובד ראשון?","כשאתה יודע בדיוק איזו משימה הוא לוקח ממך, ואיך תמדוד אותו. \"מה שלא נמדד קשה לשפר.\""),
          ("מה ההבדל בין מחזור לרווח?","מחזור הוא כל מה שנכנס. רווח הוא מה שנשאר. עסק עם מחזור גדול יכול להפסיד כסף כל חודש.")]},
@@ -122,6 +122,7 @@ def lectures_extra():
     quotes="".join(f'<figure class="q"><p>{e(t)}</p><span>{e(w)}</span></figure>' for t,w in [("אי אפשר לבקש מרצה יותר טוב","משתתפת בקורס היזמות"),("מרצה מקצוען","משתתף בקורס היזמות"),("הראש שלי לא הפסיק לעבוד","משתתף בקורס היזמות"),("פתחת לי עולם","משתתפת בקורס היזמות"),("המפגש הפיל לי אסימונים.","נתנאל ש."),("הגעתי לקורס רגע לפני שהתייאשתי.","גאולה ל.")])
     return f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">נושאים</p><h2>על מה אני מדבר</h2></div></div><div class="cards">{cards}</div></div></section>' + \
       f'<section class="quotes"><div class="wrap"><div class="head"><div><p class="eyebrow">מהקהל</p><h2>מה אמרו משתתפים</h2></div></div></div><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
+      '<section><div class="wrap"><a class="card" href="/course/" data-r style="max-width:720px"><span class="k">קורס</span><h3>קורס היזמות: 12 שיעורים</h3><p>הסילבוס המלא של הקורס שלימדתי ב-2025 במועדון היזמים, ותוצאות המשתתפים.</p><span class="go">לסילבוס ←</span></a></div></section>' + \
       ctaband("רוצה הרצאה לארגון או לאירוע?","כתבו לי ל-amittobi@gmail.com עם תאריך, קהל ונושא, ואחזור אליכם.", MAIL, "להזמנת הרצאה במייל")
 
 BIO_HE_S = "עמית טובי הוא יזם, יועץ עסקי ומרצה. הקים יותר מ-10 עסקים, ניהל יותר מ-150 עובדים וליווה יותר מ-500 בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler מטעם איתן שגב."
@@ -138,3 +139,27 @@ def press(lead):
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תמונות</p><h2>תמונות ברזולוציה גבוהה</h2></div></div><div class="kit">{kith}</div></div></section>' + \
       f'<section><div class="wrap cols"><div class="stack"><p class="eyebrow">עובדות</p><h2>בקצרה</h2></div><ul class="stack" style="list-style:none">{facts}</ul></div></section>' + \
       ctaband("ראיון, פודקאסט או הרצאה?","מייל: amittobi@gmail.com, או הודעה באינסטגרם @amit_tobi_.", MAILP, "לפנייה במייל") + '</main>'
+
+import json as _json, os as _os
+COURSE = _json.load(open(_os.path.join(_os.path.dirname(__file__), "course.json"), encoding="utf-8"))["lessons"]
+def course(lead):
+    les = "".join(f'<details{" open" if l["n"]==1 else ""}><summary><span style="color:var(--red2);font-family:var(--f-display);font-size:30px;margin-inline-end:14px">{l["n"]:02d}</span>{e(l["title"])}</summary><ul style="margin:14px 0 8px;padding-inline-start:22px;color:var(--muted);display:grid;gap:6px">' + "".join(f'<li>{e(t)}</li>' for t in l["topics"]) + f'</ul><p><strong style="color:var(--ink)">השורה התחתונה:</strong> {e(l["takeaway"])}</p></details>' for l in COURSE)
+    res = "".join(f'<div class="case" data-r><span class="num">{e(n)}</span><h3>{e(w)}</h3><p class="muted">{e(d)}</p></div>' for n,w,d in [
+        ("4+2","צ'לי ק., מאפרת","\"4 לידים ו-2 סגירות רק מהיום.\""),
+        ("6,000 ₪","מעיין ב., דולה","יום אחרי השיעור יישמה, ולקוחה בחרה בליווי המלא."),
+        ("+75","אופק","עוקבים ביום אחד, מ-570 ל-645, ולקוח לפיילוט."),
+        ("5-6","גאולה ל., מנטורית","נשים גייסה לתוכנית אחרי שנה של תקיעות."),
+        ("1","נתנאל ש.","לקוח ראשון בתשלום.")])
+    quotes = "".join(f'<figure class="q"><p>{e(t)}</p><span>משתתפ/ת בקורס</span></figure>' for t in ["אי אפשר לבקש מרצה יותר טוב","מרצה מקצוען","הראש שלי לא הפסיק לעבוד","פתחת לי עולם"])
+    body = lead("קורס היזמות", "12 שיעורים, מהרעיון ועד לקוחות שמביאים לקוחות. הקורס שלימדתי ב-2025 כמרצה הראשי במועדון היזמים.", "קורס", "amit-portrait-smile", "עמית טובי, מרצה בקורס היזמות") + \
+      '<main><section><div class="wrap cols"><div class="stack"><p class="eyebrow">בקצרה</p><h2>על הקורס</h2></div><div class="stack">' + \
+      '<p>ב-2025 הייתי המרצה הראשי של קורס היזמות במועדון היזמים. המחזור נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים. כל שיעור נבנה כמו שאני עובד עם בעלי עסקים: כלי אחד, משימה אחת, וחוברת עבודה ליישום מיידי.</p>' + \
+      '<p>הקורס בנוי מחמישה סטים של "9 קוביות": אמן (השיטה שלך), הצעה, יזם (שיווק ומכירה), שירות והפניות. הוא מתחיל בבעיה ובקהל, ונגמר בלקוחות שהופכים לשגרירים.</p></div></div></section>' + \
+      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>12 שיעורים</h2></div></div><div class="faq">{les}</div></div></section>' + \
+      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תוצאות</p><h2>מה קרה למשתתפים</h2><p class="muted" style="margin-top:12px">הודעות שמשתתפי מחזור מאי 2025 שלחו לקבוצת הקורס.</p></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div><div class="grid2">{res}</div></div></section>' + \
+      f'<section class="quotes"><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
+      ctaband("רוצה את הקורס לארגון או לקבוצה?","כתבו לי ל-amittobi@gmail.com, ואחזור עם פרטים.", MAIL, "לפנייה במייל") + '</main>'
+    ld = {"@type":"Course","name":"קורס היזמות של עמית טובי","description":"קורס יזמות בן 12 שיעורים: רעיון, שיטה, הצעה, שיווק, מכירה, שירות והפניות.","inLanguage":"he","provider":{"@type":"Person","name":"עמית טובי"},
+          "hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","startDate":"2025-05-21","instructor":{"@type":"Person","name":"עמית טובי"}},
+          "syllabusSections":[{"@type":"Syllabus","name":l["title"],"description":"; ".join(l["topics"])} for l in COURSE]}
+    return body, ld
