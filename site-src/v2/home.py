@@ -239,4 +239,7 @@ def render(base, faq_html, ld_json, title, desc, noindex=True, canonical="/"):
 <body>
 {body(faq_html)}
 <script src="/v2.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer></script>
+<script src="/v2-fx.js" defer></script>
 </body></html>'''

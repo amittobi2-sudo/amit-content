@@ -103,6 +103,9 @@ def page(path, title, desc, body, schema_extra=None, crumbs=None, lang="he", ogt
 {body}
 {V2HOME.FOOTER() if not en else V2HOME.FOOTER_EN()}
 <script src="/v2.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer></script>
+<script src="/v2-fx.js" defer></script>
 </body></html>'''
     fp = OUT + path + "index.html"
     os.makedirs(os.path.dirname(fp), exist_ok=True)
@@ -327,5 +330,5 @@ import shutil
 os.makedirs(OUT+"/img", exist_ok=True)
 for f in os.listdir(G+"/img"): shutil.copy(G+"/img/"+f, OUT+"/img/"+f)
 open(OUT+"/v2.css","w",encoding="utf-8").write(open(G+"/v2/v2.css",encoding="utf-8").read()+open(G+"/v2/inner.css",encoding="utf-8").read())
-shutil.copy(G+"/v2/v2.js", OUT+"/v2.js")
+shutil.copy(G+"/v2/v2.js", OUT+"/v2.js"); shutil.copy(G+"/v2/v2-fx.js", OUT+"/v2-fx.js")
 print("v2 assets written")
