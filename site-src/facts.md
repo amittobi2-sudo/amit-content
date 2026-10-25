@@ -60,3 +60,6 @@ Sales: help client define the problem, what it costs, why not solved yet, see th
 - Family photos received: do NOT publish (privacy, especially the baby). Keep "married, father" only.
 - Public contact email for lectures/press (Amit, Oct 25 2026): amittobi@gmail.com. TV "גלית ויואב" year possibly 2022, unconfirmed: do not publish the year.
 - Source (Oct 25 2026): Amit's own Prakti portal lesson scripts (Drive doc "תוכן - פורטל פרקטי", sections "טובי - ..."): marketing sources, Google, landing pages/lead magnet, copywriting, funnels, webinar, Instagram, marketing metrics, business development/optimization/scale. Quotes from these are his words and may be used.
+
+## HARD RULE (Amit, Oct 25 2026)
+- NEVER mention "מועדון היזמים" / Entrepreneurs Club / e-club.biz, its logo, or the "9 קוביות" method anywhere on the site. Refer only to "קורס היזמות שלי" (2025, 100+ registrants, cohort opened May 21 2025). Course materials must be in Amit's own structure and wording.

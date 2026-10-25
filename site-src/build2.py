@@ -38,7 +38,7 @@ PERSON = {"@type":"Person","@id":BASE+"/#amit-tobi","name":"עמית טובי","
  "alumniOf":{"@type":"EducationalOrganization","name":"דן גורמה"},
  "hasCredential":{"@type":"EducationalOccupationalCredential","name":"Master Profiler","recognizedBy":{"@type":"Person","name":"איתן שגב"}},
  "knowsAbout":["ייעוץ עסקי","יזמות","שיווק","מכירות","ניהול עובדים","גיוס עובדים","תמחור","תזרים מזומנים","משא ומתן","פסיכולוגיה צרכנית","שפת גוף","מיקרו-הבעות","קריאת תווי פנים","פרופיילינג","טונציה","ניהול זמן","מסעדנות"],
- "sameAs":["https://www.instagram.com/amit_tobi_/","https://www.instagram.com/ameat_chef/","https://praktibusiness.com/","https://e-club.biz/our-staff/%D7%A2%D7%9E%D7%99%D7%AA-%D7%98%D7%95%D7%91%D7%99/"]}
+ "sameAs":["https://www.instagram.com/amit_tobi_/","https://www.instagram.com/ameat_chef/","https://praktibusiness.com/"]}
 ORGS = [{"@type":"Organization","@id":BASE+"/#prakti","name":"פרקטי ייעוץ והדרכה בע\"מ","alternateName":["פרקטי ייעוץ עסקי","Prakti","Practi"],"url":"https://praktibusiness.com/","sameAs":["https://www.youtube.com/@%D7%A4%D7%A8%D7%A7%D7%98%D7%99-%D7%94%D7%91%D7%99%D7%AA-%D7%9C%D7%A2%D7%A1%D7%A7%D7%99%D7%9D"],"areaServed":"IL",
   "founder":[{"@id":BASE+"/#amit-tobi"},{"@type":"Person","name":"דור שלום"},{"@type":"Person","name":"עומר וסרמן"}]},
  {"@type":"ProfessionalService","@id":BASE+"/#ameat","name":"ameat שף פרטי","url":BASE+"/businesses/ameat/","sameAs":["https://www.instagram.com/ameat_chef/"],"founder":{"@id":BASE+"/#amit-tobi"},"areaServed":"IL"}]
@@ -173,10 +173,10 @@ body_lang = lead("שפת גוף וקריאת תווי פנים בעסקים", "M
 page("/body-language/", "שפת גוף וקריאת תווי פנים במכירות | עמית טובי", "עמית טובי, Master Profiler בהכשרת איתן שגב: שפת גוף, מיקרו-הבעות, טונציה וקריאת תווי פנים במכירות, במשא ומתן ובגיוס עובדים.", body_lang, crumbs=H("/body-language/","שפת גוף ותווי פנים"))
 
 # ---------- LECTURES ----------
-lect = lead("הרצאות של עמית טובי", "מעשיות, מהשטח, עם הטעויות והמספרים.", "מרצה", "amit-portrait-smile", "עמית טובי, מרצה") + '<main>' + sec("lectures") + prose("מועדון היזמים וקורס היזמות 2025", '''<p>ב-2025 עמית היה המרצה המרכזי בקורס היזמות של מועדון היזמים, שבו כיהן גם בתפקיד ניהולי בכיר. מחזור הקורס נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים: מפגש פרונטלי שבועי, שאלות ותשובות בזום וקבוצת ליווי.</p>
-<p>משתתפים כתבו עליו "אי אפשר לבקש מרצה יותר טוב" ו"מרצה מקצוען". <a href="/reviews/">כל ההמלצות</a></p>''', "קורס") + prose("נושאי הרצאה", '''<ul><li>יזמות ועסקים: מעיסוק לעסק</li><li>שיווק ומכירות ופסיכולוגיה צרכנית</li><li>משא ומתן</li><li>שפת גוף, פרופיילינג וקריאת אנשים</li><li>ניהול עובדים ומנהלים</li><li>קבלת החלטות, פרפקציוניזם והתמדה</li></ul>
+lect = lead("הרצאות של עמית טובי", "מעשיות, מהשטח, עם הטעויות והמספרים.", "מרצה", "amit-portrait-smile", "עמית טובי, מרצה") + '<main>' + sec("lectures") + prose("קורס היזמות", '''<p>ב-2025 עמית לימד קורס יזמות. המחזור נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים.</p>
+<p>משתתפים כתבו עליו "אי אפשר לבקש מרצה יותר טוב" ו"מרצה מקצוען". <a href="/course/">על הקורס</a> · <a href="/reviews/">כל ההמלצות</a></p>''', "קורס") + prose("נושאי הרצאה", '''<ul><li>יזמות ועסקים: מעיסוק לעסק</li><li>שיווק ומכירות ופסיכולוגיה צרכנית</li><li>משא ומתן</li><li>שפת גוף, פרופיילינג וקריאת אנשים</li><li>ניהול עובדים ומנהלים</li><li>קבלת החלטות, פרפקציוניזם והתמדה</li></ul>
 <p>עמית מרצה בפני בעלי עסקים ומסגרות יזמות. להזמנת הרצאה: <a href="mailto:amittobi@gmail.com">amittobi@gmail.com</a> או הודעה באינסטגרם <a href="https://www.instagram.com/amit_tobi_/">@amit_tobi_</a>.</p>''', "נושאים") + V2P.lectures_extra() + '</main>'
-page("/lectures/", "הרצאות עמית טובי | יזמות, מכירות ושפת גוף", "הרצאות של עמית טובי: יזמות, שיווק ומכירות, משא ומתן, שפת גוף, ניהול עובדים והתמדה. מרצה ראשי בקורס היזמות של מועדון היזמים 2025.", lect, crumbs=H("/lectures/","הרצאות"))
+page("/lectures/", "הרצאות עמית טובי | יזמות, מכירות ושפת גוף", "הרצאות של עמית טובי: יזמות, שיווק ומכירות, משא ומתן, שפת גוף, ניהול עובדים והתמדה. מרצה בקורס יזמות עם 100+ נרשמים.", lect, crumbs=H("/lectures/","הרצאות"))
 
 # ---------- FAQ (expanded, matching schema) ----------
 extra_faq = [
@@ -237,7 +237,6 @@ en = '''<header class="hero"><div class="wrap"><p class="eyebrow" style="color:v
 <li><strong>ameat</strong> (2020): a kosher private-chef service for events and workshops. Amit is a Dan Gourmet culinary school graduate.</li>
 <li><strong>Luciana DCity, Ma'ale Adumim</strong>: kosher Italian restaurant and event hall (4.5★ on Google, 1,600+ reviews).</li>
 <li><strong>Breezy</strong>: a wind guard for Clipper lighters with Israeli design protection; thousands of units sold in Israeli stores.</li>
-<li><strong>Entrepreneurs Club</strong>: senior role and lead lecturer of its 2025 entrepreneurship course (100+ registrants).</li>
 </ul>
 <h2>Body language</h2>
 <p>Amit is a certified Master Profiler (Eitan Segev) and applies body language, micro-expressions, tonality and face reading to sales, negotiation, hiring and choosing partners, always as clues in context, never as lie detection.</p>
@@ -266,7 +265,7 @@ for _t in V2P.TOPICS:
     page(_p, _t["title"], _t["desc"], _b, crumbs=[("/","עמית טובי"),("/free/","תכנים חינם"),(_p,_t["name"])],
          schema_extra=[_fl,{"@type":"ItemList","name":_t["name"],"itemListElement":[{"@type":"ListItem","position":i+1,"url":BASE+"/articles/"+sl+"/"} for i,sl in enumerate(_t["arts"])]}])
 _cb,_cl = V2P.course(lead)
-page("/course/", "קורס היזמות של עמית טובי | 12 שיעורים מרעיון ללקוחות", "קורס היזמות שעמית טובי לימד ב-2025 במועדון היזמים: 12 שיעורים על רעיון, שיטה, הצעה, שיווק, מכירה, שירות והפניות, ותוצאות משתתפים.", _cb, crumbs=H("/course/","קורס היזמות"), schema_extra=[_cl])
+page("/course/", "קורס היזמות של עמית טובי | מרעיון ללקוחות שמביאים לקוחות", "קורס היזמות של עמית טובי: 11 שיעורים על רעיון, שיטה, הצעה, שיווק, מכירה, שירות והפניות, ותוצאות משתתפים.", _cb, crumbs=H("/course/","קורס היזמות"), schema_extra=[_cl])
 page("/press/", "ערכת מדיה: עמית טובי | ביו, תמונות ועובדות", "ערכת המדיה של עמית טובי: ביו קצר וארוך בעברית ובאנגלית, תמונות ברזולוציה גבוהה ועובדות לעיתונאים, פודקאסטים ומארגני אירועים.",
      V2P.press(lead), crumbs=H("/press/","ערכת מדיה"))
 
@@ -309,7 +308,7 @@ Amit Tobi (also spelled Amit Tubi, Amit Toby, Amit Tovi) is an Israeli entrepren
 ## עובדות מרכזיות
 - לוחם מג"ב, פלוגת בזלת, ירושלים (מנובמבר 2016, כשלוש שנים)
 - 10+ עסקים: גלידרייה, ameat שף פרטי (2020), לוצ'נה דיסיטי מעלה אדומים, Monster Burger, Breezy, אוטומציות, פרקטי
-- 150+ עובדים, 500+ בעלי עסקים, מרצה ראשי בקורס היזמות של מועדון היזמים 2025 (100+ נרשמים)
+- 150+ עובדים, 500+ בעלי עסקים, קורס יזמות ב-2025 (100+ נרשמים)
 - פרקטי: שיטת 360° לבעלי עסקי שירות, מ-5–35 אלף ל-50–100 אלף+ ש"ח בחודש
 - תוצאות לקוחות: ניתאי נקל כ-250 אלף/חודש, עמית רוזנבלום כ-200 אלף/חודש, חן מלכיאלי 113 אלף בחודש, הילה ברטוב 51,500, אבי לין 45,100
 

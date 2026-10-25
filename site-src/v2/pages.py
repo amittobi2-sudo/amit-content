@@ -122,11 +122,11 @@ def lectures_extra():
     quotes="".join(f'<figure class="q"><p>{e(t)}</p><span>{e(w)}</span></figure>' for t,w in [("אי אפשר לבקש מרצה יותר טוב","משתתפת בקורס היזמות"),("מרצה מקצוען","משתתף בקורס היזמות"),("הראש שלי לא הפסיק לעבוד","משתתף בקורס היזמות"),("פתחת לי עולם","משתתפת בקורס היזמות"),("המפגש הפיל לי אסימונים.","נתנאל ש."),("הגעתי לקורס רגע לפני שהתייאשתי.","גאולה ל.")])
     return f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">נושאים</p><h2>על מה אני מדבר</h2></div></div><div class="cards">{cards}</div></div></section>' + \
       f'<section class="quotes"><div class="wrap"><div class="head"><div><p class="eyebrow">מהקהל</p><h2>מה אמרו משתתפים</h2></div></div></div><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
-      '<section><div class="wrap"><a class="card" href="/course/" data-r style="max-width:720px"><span class="k">קורס</span><h3>קורס היזמות: 12 שיעורים</h3><p>הסילבוס המלא של הקורס שלימדתי ב-2025 במועדון היזמים, ותוצאות המשתתפים.</p><span class="go">לסילבוס ←</span></a></div></section>' + \
+      '<section><div class="wrap"><a class="card" href="/course/" data-r style="max-width:720px"><span class="k">קורס</span><h3>קורס היזמות: 12 שיעורים</h3><p>מה לומדים בקורס, ומה קרה למשתתפים.</p><span class="go">לסילבוס ←</span></a></div></section>' + \
       ctaband("רוצה הרצאה לארגון או לאירוע?","כתבו לי ל-amittobi@gmail.com עם תאריך, קהל ונושא, ואחזור אליכם.", MAIL, "להזמנת הרצאה במייל")
 
 BIO_HE_S = "עמית טובי הוא יזם, יועץ עסקי ומרצה. הקים יותר מ-10 עסקים, ניהל יותר מ-150 עובדים וליווה יותר מ-500 בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler מטעם איתן שגב."
-BIO_HE_L = "עמית טובי (Amit Tobi), יליד 1998, הוא יזם, יועץ עסקי ומרצה ישראלי. אחרי שירות קרבי במג\"ב בירושלים פתח גלידרייה שלא שרדה את הקורונה, הקים את ameat, שירות שף פרטי כשר, והשקיע כמעט 2 מיליון ש\"ח במסעדת לוצ'נה במעלה אדומים. לאורך הדרך הקים, ניהל או היה שותף ביותר מ-10 עסקים וניהל יותר מ-150 עובדים. ב-2025 היה המרצה הראשי של קורס היזמות במועדון היזמים, ובסוף 2025 הקים עם דור שלום ועומר וסרמן את פרקטי ייעוץ עסקי, שמלווה בעלי עסקי שירות. עמית הוא Master Profiler מטעם איתן שגב ומרצה על יזמות, מכירות, פסיכולוגיה צרכנית, שפת גוף וניהול עובדים."
+BIO_HE_L = "עמית טובי (Amit Tobi), יליד 1998, הוא יזם, יועץ עסקי ומרצה ישראלי. אחרי שירות קרבי במג\"ב בירושלים פתח גלידרייה שלא שרדה את הקורונה, הקים את ameat, שירות שף פרטי כשר, והשקיע כמעט 2 מיליון ש\"ח במסעדת לוצ'נה במעלה אדומים. לאורך הדרך הקים, ניהל או היה שותף ביותר מ-10 עסקים וניהל יותר מ-150 עובדים. ב-2025 לימד קורס יזמות עם יותר מ-100 נרשמים, ובסוף 2025 הקים עם דור שלום ועומר וסרמן את פרקטי ייעוץ עסקי, שמלווה בעלי עסקי שירות. עמית הוא Master Profiler מטעם איתן שגב ומרצה על יזמות, מכירות, פסיכולוגיה צרכנית, שפת גוף וניהול עובדים."
 BIO_EN = "Amit Tobi (born 1998) is an Israeli entrepreneur, business consultant and speaker. He has founded, managed or partnered in more than 10 businesses, managed over 150 employees and advised over 500 business owners. He is the co-founder of Prakti Business Consulting and a certified Master Profiler (Eitan Segev)."
 
 def press(lead):
@@ -140,26 +140,49 @@ def press(lead):
       f'<section><div class="wrap cols"><div class="stack"><p class="eyebrow">עובדות</p><h2>בקצרה</h2></div><ul class="stack" style="list-style:none">{facts}</ul></div></section>' + \
       ctaband("ראיון, פודקאסט או הרצאה?","מייל: amittobi@gmail.com, או הודעה באינסטגרם @amit_tobi_.", MAILP, "לפנייה במייל") + '</main>'
 
-import json as _json, os as _os
-COURSE = _json.load(open(_os.path.join(_os.path.dirname(__file__), "course.json"), encoding="utf-8"))["lessons"]
+
+STAGES = [
+ ("שלב 1","מהרעיון לשיטה",[
+   ("למצוא את הבעיה הנכונה",["לזהות בעיה כואבת ואמיתית","לבחור קהל ונישה מדויקים","לבדוק מי עוד פותר את זה","משפט אחד: אני עוזר ל... ש... באמצעות..."],"עסק טוב מתחיל מבעיה אמיתית של קהל מדויק, לא מרעיון יפה."),
+   ("לבנות שיטה משלך",["למפות את הידע והניסיון שלך","לעבוד הפוך: מהתוצאה אחורה לשלבים","פיילוט עם אנשים אמיתיים","לאסוף המלצות נכון"],"שיטה ברורה יוצרת ביטחון אצלך ואמון אצל הלקוח, ופיילוט בודק אותה בשטח.")]),
+ ("שלב 2","הצעה שקל לקנות",[
+   ("לנסח הצעה שמדברת תוצאה",["תכונה, תועלת ותועלת עמוקה","במה אתה שונה","תהליך עבודה בשלבים","כלים ובונוסים שמוסיפים ערך"],"לקוחות לא קונים מה שאתה עושה, הם קונים מה שהם מקבלים."),
+   ("מחיר, דחיפות ואחריות",["לתמחר לפי ערך ולבדוק רווחיות","מוגבלות אמיתית בזמן או בכמות","אחריות שמורידה סיכון","שם לעסק או לשיטה, ובסיס מול רואה חשבון ועורך דין"],"המחיר משקף את השינוי שהלקוח מקבל, לא את השעות שלך.")]),
+ ("שלב 3","שיווק שמביא פניות",[
+   ("למי, מה ואיפה",["לקוח אידיאלי מדויק","לנסח את הכאב, התוצאה והמכשול","לבחור ערוצי שיווק","תוכנית פעולה ומינוף תוכן אחד לכמה מקומות"],"שיווק מתחיל מלדעת למי מדברים, ולהיות איפה שהוא נמצא."),
+   ("מוצר פיתיון",["הבטחה קטנה וממוקדת","לבחור פורמט: מדריך, סרטון, שיחה","קריאה פשוטה לפעולה","מה עושים אחרי שהשאירו פרטים"],"הפיתיון לא מוכר. הוא נותן טעימה ופותח דלת."),
+   ("טיפוח עד שהלקוח מוכן",["ערך, קשר, אמון ואז רכישה","תוכן קבוע למי שעוד לא קנה","קהילה","להישאר בתודעה בלי לרדוף"],"רוב האנשים לא קונים מיד. מי שנשאר בתודעה, מקבל אותם כשהם מוכנים.")]),
+ ("שלב 4","מכירה בלי לחץ",[
+   ("ביטחון במכירה",["ביטחון בעצמך","ביטחון במה שאתה מוכר","ביטחון בלקוח וביכולת שלו להחליט"],"מי שבטוח בערך שלו לא צריך לדחוף."),
+   ("שיחת מכירה שבנויה משאלות",["להבין למה הוא פנה","לזקק את הבעיה ומה היא עולה לו","להציג פתרון מותאם עם סיפורי הצלחה","הצעה, התלבטויות וסגירה","מעקב אחרי שיחה שלא נסגרה"],"במכירה לא משכנעים. מבינים, ומובילים לצעד ברור."),
+   ("מה שקורה מאחורי הקלעים",["טון דיבור ושפת גוף","מערכת לניהול לידים","יעדים ושגרת מכירות","שליטה עצמית ברגעים לחוצים"],"מכירה טובה נשענת על שאלות טובות, מספרים ושגרה.")]),
+ ("שלב 5","שירות שמייצר צמיחה",[
+   ("שירות שמשאיר לקוחות",["לעודד שימוש ולהסיר מכשולים","לבקש משוב ולשפר","קהילת לקוחות","לחזור ללקוחות עבר"],"שיפור קטן בשירות משנה את כל החוויה."),
+   ("להגדיל רווח מלקוחות קיימים",["העלאת מחירים ומסלולים","הצעות המשך והצעות משלימות","לבנות שגרה של הפניות","תוכן וסרטונים שמספרים מי אתה"],"קל יותר להרוויח מלקוח מרוצה מאשר להביא לקוח חדש.")]),
+]
 def course(lead):
-    les = "".join(f'<details{" open" if l["n"]==1 else ""}><summary><span style="color:var(--red2);font-family:var(--f-display);font-size:30px;margin-inline-end:14px">{l["n"]:02d}</span>{e(l["title"])}</summary><ul style="margin:14px 0 8px;padding-inline-start:22px;color:var(--muted);display:grid;gap:6px">' + "".join(f'<li>{e(t)}</li>' for t in l["topics"]) + f'</ul><p><strong style="color:var(--ink)">השורה התחתונה:</strong> {e(l["takeaway"])}</p></details>' for l in COURSE)
-    res = "".join(f'<div class="case" data-r><span class="num">{e(n)}</span><h3>{e(w)}</h3><p class="muted">{e(d)}</p></div>' for n,w,d in [
+    n=0; blocks=""
+    for code,name,lessons in STAGES:
+        items=""
+        for t,tops,tk in lessons:
+            n+=1
+            items+=f'<details><summary><span style="color:var(--red2);font-family:var(--f-display);font-size:28px;margin-inline-end:14px">{n:02d}</span>{e(t)}</summary><ul style="margin:14px 0 8px;padding-inline-start:22px;color:var(--muted);display:grid;gap:6px">' + "".join(f'<li>{e(x)}</li>' for x in tops) + f'</ul><p><strong style="color:var(--ink)">השורה התחתונה:</strong> {e(tk)}</p></details>'
+        blocks+=f'<div style="margin-bottom:46px"><p class="eyebrow">{code}</p><h3 style="font-family:var(--f-display);font-size:clamp(36px,4vw,56px);line-height:1;margin:8px 0 10px">{e(name)}</h3><div class="faq">{items}</div></div>'
+    res = "".join(f'<div class="case" data-r><span class="num">{e(a)}</span><h3>{e(w)}</h3><p class="muted">{e(d)}</p></div>' for a,w,d in [
         ("4+2","צ'לי ק., מאפרת","\"4 לידים ו-2 סגירות רק מהיום.\""),
         ("6,000 ₪","מעיין ב., דולה","יום אחרי השיעור יישמה, ולקוחה בחרה בליווי המלא."),
         ("+75","אופק","עוקבים ביום אחד, מ-570 ל-645, ולקוח לפיילוט."),
         ("5-6","גאולה ל., מנטורית","נשים גייסה לתוכנית אחרי שנה של תקיעות."),
         ("1","נתנאל ש.","לקוח ראשון בתשלום.")])
     quotes = "".join(f'<figure class="q"><p>{e(t)}</p><span>משתתפ/ת בקורס</span></figure>' for t in ["אי אפשר לבקש מרצה יותר טוב","מרצה מקצוען","הראש שלי לא הפסיק לעבוד","פתחת לי עולם"])
-    body = lead("קורס היזמות", "12 שיעורים, מהרעיון ועד לקוחות שמביאים לקוחות. הקורס שלימדתי ב-2025 כמרצה הראשי במועדון היזמים.", "קורס", "amit-portrait-smile", "עמית טובי, מרצה בקורס היזמות") + \
+    body = lead("קורס היזמות", "מהרעיון ועד לקוחות שמביאים לקוחות. חמישה שלבים, אחד-עשר שיעורים, וכלים שמיישמים כבר באותו שבוע.", "קורס", "amit-portrait-smile", "עמית טובי, מרצה בקורס היזמות") + \
       '<main><section><div class="wrap cols"><div class="stack"><p class="eyebrow">בקצרה</p><h2>על הקורס</h2></div><div class="stack">' + \
-      '<p>ב-2025 הייתי המרצה הראשי של קורס היזמות במועדון היזמים. המחזור נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים. כל שיעור נבנה כמו שאני עובד עם בעלי עסקים: כלי אחד, משימה אחת, וחוברת עבודה ליישום מיידי.</p>' + \
-      '<p>הקורס בנוי מחמישה סטים של "9 קוביות": אמן (השיטה שלך), הצעה, יזם (שיווק ומכירה), שירות והפניות. הוא מתחיל בבעיה ובקהל, ונגמר בלקוחות שהופכים לשגרירים.</p></div></div></section>' + \
-      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>12 שיעורים</h2></div></div><div class="faq">{les}</div></div></section>' + \
+      '<p>ב-2025 לימדתי קורס יזמות. המחזור נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים. כל שיעור בנוי כמו שאני עובד עם בעלי עסקים: כלי אחד, משימה אחת, ויישום מיידי.</p>' + \
+      '<p>הקורס עובר בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה, ושירות שמייצר צמיחה. אותו סדר שבו אני בונה עסקים מאז הגלידרייה.</p></div></div></section>' + \
+      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>5 שלבים, 11 שיעורים</h2></div></div>{blocks}</div></section>' + \
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תוצאות</p><h2>מה קרה למשתתפים</h2><p class="muted" style="margin-top:12px">הודעות שמשתתפי מחזור מאי 2025 שלחו לקבוצת הקורס.</p></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div><div class="grid2">{res}</div></div></section>' + \
       f'<section class="quotes"><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
       ctaband("רוצה את הקורס לארגון או לקבוצה?","כתבו לי ל-amittobi@gmail.com, ואחזור עם פרטים.", MAIL, "לפנייה במייל") + '</main>'
-    ld = {"@type":"Course","name":"קורס היזמות של עמית טובי","description":"קורס יזמות בן 12 שיעורים: רעיון, שיטה, הצעה, שיווק, מכירה, שירות והפניות.","inLanguage":"he","provider":{"@type":"Person","name":"עמית טובי"},
-          "hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","startDate":"2025-05-21","instructor":{"@type":"Person","name":"עמית טובי"}},
-          "syllabusSections":[{"@type":"Syllabus","name":l["title"],"description":"; ".join(l["topics"])} for l in COURSE]}
+    ld = {"@type":"Course","name":"קורס היזמות של עמית טובי","description":"קורס יזמות בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה ושירות שמייצר צמיחה.","inLanguage":"he","provider":{"@type":"Person","name":"עמית טובי"},
+          "hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","startDate":"2025-05-21","instructor":{"@type":"Person","name":"עמית טובי"}}}
     return body, ld
