@@ -39,7 +39,7 @@ PERSON = {"@type":"Person","@id":BASE+"/#amit-tobi","name":"עמית טובי","
  "hasCredential":{"@type":"EducationalOccupationalCredential","name":"Master Profiler","recognizedBy":{"@type":"Person","name":"איתן שגב"}},
  "knowsAbout":["ייעוץ עסקי","יזמות","שיווק","מכירות","ניהול עובדים","גיוס עובדים","תמחור","תזרים מזומנים","משא ומתן","פסיכולוגיה צרכנית","שפת גוף","מיקרו-הבעות","קריאת תווי פנים","פרופיילינג","טונציה","ניהול זמן","מסעדנות"],
  "sameAs":["https://www.instagram.com/amit_tobi_/","https://www.instagram.com/ameat_chef/","https://praktibusiness.com/","https://e-club.biz/our-staff/%D7%A2%D7%9E%D7%99%D7%AA-%D7%98%D7%95%D7%91%D7%99/"]}
-ORGS = [{"@type":"Organization","@id":BASE+"/#prakti","name":"פרקטי ייעוץ והדרכה בע\"מ","alternateName":["פרקטי ייעוץ עסקי","Prakti","Practi"],"url":"https://praktibusiness.com/","areaServed":"IL",
+ORGS = [{"@type":"Organization","@id":BASE+"/#prakti","name":"פרקטי ייעוץ והדרכה בע\"מ","alternateName":["פרקטי ייעוץ עסקי","Prakti","Practi"],"url":"https://praktibusiness.com/","sameAs":["https://www.youtube.com/@%D7%A4%D7%A8%D7%A7%D7%98%D7%99-%D7%94%D7%91%D7%99%D7%AA-%D7%9C%D7%A2%D7%A1%D7%A7%D7%99%D7%9D"],"areaServed":"IL",
   "founder":[{"@id":BASE+"/#amit-tobi"},{"@type":"Person","name":"דור שלום"},{"@type":"Person","name":"עומר וסרמן"}]},
  {"@type":"ProfessionalService","@id":BASE+"/#ameat","name":"ameat שף פרטי","url":BASE+"/businesses/ameat/","sameAs":["https://www.instagram.com/ameat_chef/"],"founder":{"@id":BASE+"/#amit-tobi"},"areaServed":"IL"}]
 
@@ -143,7 +143,7 @@ page("/prakti/", "פרקטי ייעוץ עסקי | עמית טובי, דור ש�
 page("/results/", "תוצאות לקוחות | עמית טובי ופרקטי", "מ-15 אלף ל-113 אלף בחודש, מ-1,200 ל-45,100, מ-6 אלף ל-51,500. תוצאות של בעלי עסקים שליווה עמית טובי בפרקטי ייעוץ עסקי.",
  lead("תוצאות לקוחות", "מספרים מתוך הליווי בפרקטי ייעוץ עסקי.", "תוצאות") + '<main>' + RES + prose("רוצים תוצאות כאלה?", '<p><a href="https://praktibusiness.com/contact">פגישת אבחון בפרקטי</a> · <a href="/reviews/">מה אומרים הלקוחות</a> · <a href="/yoetz-iski/">יועץ עסקי לפי תחום</a></p>') + '</main>', crumbs=H("/results/","תוצאות"))
 page("/reviews/", "עמית טובי – המלצות וביקורות", "מה אומרים בעלי עסקים ומשתתפי קורס על עמית טובי: \"לראשונה הרגשתי שיש לי עסק אמיתי\", \"מרצה מקצוען\". המלצות מלקוחות פרקטי ומשתתפי הקורס.",
- lead("עמית טובי – המלצות וביקורות", "לקוחות ומשתתפים, במילים שלהם.", "המלצות") + '<main>' + REV + prose("עוד", '<p><a href="/results/">תוצאות במספרים</a> · <a href="/clients/">56 לקוחות פרקטי</a> · <a href="/lectures/">ההרצאות</a></p>') + '</main>', crumbs=H("/reviews/","המלצות וביקורות"))
+ lead("עמית טובי – המלצות וביקורות", "לקוחות ומשתתפים, במילים שלהם.", "המלצות") + '<main>' + V2HOME.video_strip() + REV + prose("עוד", '<p><a href="/results/">תוצאות במספרים</a> · <a href="/clients/">56 לקוחות פרקטי</a> · <a href="/lectures/">ההרצאות</a></p>') + '</main>', crumbs=H("/reviews/","המלצות וביקורות"))
 page("/clients/", "לקוחות | בעלי עסקים מקהילת פרקטי ועמית טובי", "56 לקוחות פרקטי ייעוץ עסקי שליווה עמית טובי ושותפיו: כושר ותזונה, סוכנויות, אירועים ואוכל, ייעוץ פיננסי ועוד, עם קישור לכל עסק.",
  lead("לקוחות", "בעלי העסקים מקהילת פרקטי.", "קהילה") + '<main>' + COMM + '</main>', crumbs=H("/clients/","לקוחות"))
 

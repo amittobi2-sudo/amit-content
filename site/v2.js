@@ -116,3 +116,5 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else v.pause()}),{threshold:.25});vs.forEach(v=>io.observe(v))})();
 /* copy bios */
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.querySelector('p:last-of-type').innerText;navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{b.textContent='הועתק ✓';setTimeout(()=>b.textContent='העתקה',1800)})}));
+/* lite youtube */
+document.querySelectorAll('.yt[data-yt]').forEach(b=>b.addEventListener('click',()=>{const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='סרטון';b.replaceChildren(f)},{once:true}));

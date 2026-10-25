@@ -81,6 +81,11 @@ def NAV_EN():
 </div></nav>'''
 def FOOTER_EN():
     return f'''<footer><div class="wrap"><p>Amit Tobi · Entrepreneur, business consultant and speaker · Co-founder of <a href="https://praktibusiness.com/">Prakti Business Consulting</a> · <a href="https://www.instagram.com/amit_tobi_/" rel="me">Instagram @amit_tobi_</a> · <a href="/">עברית</a></p><p style="margin-top:20px">© 2026 Amit Tobi</p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>'''
+VIDS = ['M-ozW9tzOhg', 'fjJJ4IPMVNM', '9lPNmyWSvwg', 'ApQhNV26V90', 'ot6udnsT9As']
+def video_strip(title="המלצות בווידאו", sub="לקוחות פרקטי מספרים בעצמם."):
+    items="".join(f'<button class="yt" data-yt="{v}" aria-label="ניגון סרטון המלצה {i+1}"><img src="https://i.ytimg.com/vi/{v}/hqdefault.jpg" alt="סרטון המלצה {i+1} של לקוח פרקטי" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button>' for i,v in enumerate(VIDS))
+    return f'<section id="videos"><div class="wrap"><div class="head"><div><p class="eyebrow">וידאו</p><h2 class="h2">{title}</h2><p class="sub">{sub}</p></div><a class="more" href="https://www.youtube.com/@%D7%A4%D7%A8%D7%A7%D7%98%D7%99-%D7%94%D7%91%D7%99%D7%AA-%D7%9C%D7%A2%D7%A1%D7%A7%D7%99%D7%9D" rel="noopener">לערוץ היוטיוב של פרקטי ←</a></div><div class="ytgrid">{items}</div></div></section>'
+
 def esc(s): return H.escape(s, quote=False)
 
 def body(faq_html):
@@ -164,6 +169,7 @@ def body(faq_html):
     r2="".join(f'<figure class="q"><p>{esc(t)}</p><span>{esc(w)}</span></figure>' for t,w in Q2)
     o.append(f'''<section class="quotes" id="reviews" aria-label="המלצות"><div class="wrap"><div class="head"><div><p class="eyebrow">המלצות</p><h2 class="h2" data-r>מה <em>הם</em> אומרים.</h2></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div></div>
 <div class="qrow"><div class="qtrack">{r1}</div></div><div class="qrow rev"><div class="qtrack">{r2}</div></div></section>''')
+    o.append(video_strip())
     # FREE HUB
     tp="".join(f'<a class="topic" href="{u}" data-r><span class="cnt">חינם</span><span class="ic" aria-hidden="true">{i}</span><h3>{esc(t)}</h3><p>{esc(p)}</p></a>' for i,t,p,u in TOPICS)
     o.append(f'''<section id="free"><div class="wrap">

@@ -320,3 +320,13 @@ footer .big{font-family:var(--f-display);font-size:clamp(80px,16vw,260px);line-h
 .bz{min-height:260px}
 .speak-img{width:100%;max-height:420px;object-fit:cover;object-position:50% 15%;border-radius:24px;margin-bottom:24px;border:1px solid var(--line)}
 @media (max-width:1000px){.media .wrap{grid-template-columns:1fr}.media figure{min-height:260px}.media .reel{min-height:420px}}
+/* youtube lite */
+.ytgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.yt{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;cursor:pointer;padding:0;aspect-ratio:9/12}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .4s,transform 1s var(--ease)}
+.yt:hover img{opacity:1;transform:scale(1.05)}
+.yt .play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:var(--red);box-shadow:0 0 0 10px rgba(200,16,46,.25),0 10px 40px var(--redglow);transition:transform .4s var(--ease)}
+.yt .play::after{content:"";position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff}
+.yt:hover .play{transform:scale(1.1)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:1000px){.ytgrid{grid-template-columns:repeat(2,1fr)}}
