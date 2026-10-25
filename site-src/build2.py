@@ -74,6 +74,7 @@ def page(path, title, desc, body, schema_extra=None, crumbs=None, lang="he", ogt
 <meta name="description" content="{html.escape(desc)}">
 <meta name="author" content="{"Amit Tobi" if en else "עמית טובי"}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="google-site-verification" content="e3FqUDfzGrb3m0-ksrHiiD72oABmCjvkKwo9U9YwtXI" />
 <link rel="canonical" href="{url}">
 {alt}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
