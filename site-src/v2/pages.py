@@ -175,11 +175,11 @@ def course(lead):
         ("5-6","גאולה ל., מנטורית","נשים גייסה לתוכנית אחרי שנה של תקיעות."),
         ("1","נתנאל ש.","לקוח ראשון בתשלום.")])
     quotes = "".join(f'<figure class="q"><p>{e(t)}</p><span>משתתפ/ת בקורס</span></figure>' for t in ["אי אפשר לבקש מרצה יותר טוב","מרצה מקצוען","הראש שלי לא הפסיק לעבוד","פתחת לי עולם"])
-    body = lead("קורס היזמות", "מהרעיון ועד לקוחות שמביאים לקוחות. חמישה שלבים, אחד-עשר שיעורים, וכלים שמיישמים כבר באותו שבוע.", "קורס", "amit-portrait-smile", "עמית טובי, מרצה בקורס היזמות") + \
+    body = lead("קורס היזמות", "מהרעיון ועד לקוחות שמביאים לקוחות. חמישה שלבים, שנים-עשר שיעורים, וכלים שמיישמים כבר באותו שבוע.", "קורס", "amit-portrait-smile", "עמית טובי, מרצה בקורס היזמות") + \
       '<main><section><div class="wrap cols"><div class="stack"><p class="eyebrow">בקצרה</p><h2>על הקורס</h2></div><div class="stack">' + \
       '<p>ב-2025 לימדתי קורס יזמות. המחזור נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים. כל שיעור בנוי כמו שאני עובד עם בעלי עסקים: כלי אחד, משימה אחת, ויישום מיידי.</p>' + \
       '<p>הקורס עובר בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה, ושירות שמייצר צמיחה. אותו סדר שבו אני בונה עסקים מאז הגלידרייה.</p></div></div></section>' + \
-      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>5 שלבים, 11 שיעורים</h2></div></div>{blocks}</div></section>' + \
+      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>5 שלבים, 12 שיעורים</h2></div></div>{blocks}</div></section>' + \
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תוצאות</p><h2>מה קרה למשתתפים</h2><p class="muted" style="margin-top:12px">הודעות שמשתתפי מחזור מאי 2025 שלחו לקבוצת הקורס.</p></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div><div class="grid2">{res}</div></div></section>' + \
       f'<section class="quotes"><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
       ctaband("רוצה את הקורס לארגון או לקבוצה?","כתבו לי ל-amittobi@gmail.com, ואחזור עם פרטים.", MAIL, "לפנייה במייל") + '</main>'
