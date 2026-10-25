@@ -114,3 +114,5 @@ $$('.track,.qtrack').forEach(t=>{t.innerHTML+=t.innerHTML;[...t.children].slice(
 (()=>{const vs=[...document.querySelectorAll('video[data-lazyplay]')];if(!vs.length)return;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else v.pause()}),{threshold:.25});vs.forEach(v=>io.observe(v))})();
+/* copy bios */
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.querySelector('p:last-of-type').innerText;navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{b.textContent='הועתק ✓';setTimeout(()=>b.textContent='העתקה',1800)})}));

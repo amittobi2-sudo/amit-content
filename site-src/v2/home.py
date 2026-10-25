@@ -34,11 +34,11 @@ Q1 = [("היום יש לי מנגנון אמיתי שלא תלוי רק בי.","
 Q2 = [("4 לידים ו-2 סגירות רק מהיום.","צ'לי ק., מאפרת"),("אתה פשוט מקצוען, ואני לומד ממך המון.","אופק, משתתף בקורס"),("הגעתי לקורס רגע לפני שהתייאשתי.","גאולה ל., מנטורית"),("המפגש הפיל לי אסימונים.","נתנאל ש., משתתף בקורס"),("חברה, סגרנו לקוח ראשון היום, ממש עכשיו. בתשלום.","הילה א., מטפלת"),("אי אפשר לבקש מרצה יותר טוב","משתתפת בקורס היזמות"),("הראש שלי לא הפסיק לעבוד","משתתף בקורס היזמות"),("פתחת לי עולם","משתתפת בקורס היזמות")]
 
 TOPICS = [
- ("◉","שפת גוף","מה באמת אפשר לקרוא בפגישה, ומה לא. מיקרו-הבעות, טונציה ותווי פנים.","/body-language/"),
- ("◈","פסיכולוגיה שיווקית","למה בן אדם קונה, ואיך בונים שיווק שמתחיל משם.","/articles/shivuk-leaskei-sherut/"),
- ("◆","מכירות","מכירה שבנויה משאלות. בלי לחץ, בלי טריקים.","/articles/mechira-mi-sheelot/"),
- ("◎","עמוד אינסטגרם","מה עובד באמת לעסקי שירות, מהביו ועד הפנייה.","/articles/shivuk-beinstagram-leaskei-sherut/"),
- ("◇","מוצר פיתיון","מוצר כניסה, דף נחיתה ווובינר: המשפך שמביא לידים כל שבוע.","/articles/mutzar-knisa-daf-nechita-webinar/"),
+ ("◉","שפת גוף","מה באמת אפשר לקרוא בפגישה, ומה לא. מיקרו-הבעות, טונציה ותווי פנים.","/free/safat-guf/"),
+ ("◈","פסיכולוגיה שיווקית","למה בן אדם קונה, ואיך בונים שיווק שמתחיל משם.","/free/psichologia-shivukit/"),
+ ("◆","מכירות","מכירה שבנויה משאלות. בלי לחץ, בלי טריקים.","/free/mechirot/"),
+ ("◎","עמוד אינסטגרם","מה עובד באמת לעסקי שירות, מהביו ועד הפנייה.","/free/instagram/"),
+ ("◇","מוצר פיתיון","מוצר כניסה, דף נחיתה ווובינר: המשפך שמביא לידים כל שבוע.","/free/mutzar-pitayon/"),
 ]
 
 BIZ = [
@@ -54,18 +54,40 @@ BIZ = [
 
 SPEAK = [("יזמות","ממה שעובד בשטח"),("שיווק ומכירות","מלמה לקנות ועד סגירה"),("פסיכולוגיה צרכנית","למה בן אדם קונה"),("משא ומתן","עם לקוחות וספקים"),("שפת גוף ופרופיילינג","לקרוא את מי שמולך"),("ניהול עובדים ומנהלים","מניסיון של 150+ עובדים"),("קבלת החלטות ופרפקציוניזם","לצאת לפעולה"),("התמדה","הטיפה שחוצבת בסלע")]
 
+
+NAVLINKS=[("/about/","הסיפור"),("/results/","תוצאות"),("/free/","תכנים חינם"),("/lectures/","הרצאות"),("/businesses/","עסקים"),("/articles/","מאמרים"),("/en/","EN")]
+def NAV(path):
+    links="".join(f'<a href="{u}"{" aria-current=\"page\"" if path.startswith(u) and u!="/" else ""}>{t}</a>' for u,t in NAVLINKS)
+    return f'''<nav class="nav" aria-label="ניווט ראשי"><div class="wrap">
+<a class="logo" href="/" aria-label="עמית טובי, דף הבית"><i></i>עמית טובי</a>
+<div class="links" id="menu">{links}</div>
+<a class="btn sm" href="{CONTACT}">פגישת אבחון <span class="arr">←</span></a>
+<button class="burger" aria-label="תפריט" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
+</div></nav>'''
+def FOOTER():
+    return f'''<footer><div class="wrap"><div class="cols">
+<div><a class="logo" href="/"><i></i>עמית טובי</a><p style="margin-top:14px;max-width:320px">יזם, יועץ עסקי ומרצה. מייסד-שותף בפרקטי ייעוץ עסקי.</p></div>
+<div><h4>עמית</h4><ul><li><a href="/about/">הסיפור</a></li><li><a href="/businesses/">העסקים</a></li><li><a href="/lectures/">הרצאות</a></li><li><a href="/press/">ערכת מדיה</a></li><li><a href="/body-language/">שפת גוף</a></li></ul></div>
+<div><h4>ללמוד</h4><ul><li><a href="/free/">תכנים חינם</a></li><li><a href="/articles/">מאמרים</a></li><li><a href="/results/">תוצאות</a></li><li><a href="/reviews/">המלצות</a></li><li><a href="/faq/">שאלות נפוצות</a></li></ul></div>
+<div><h4>קשר</h4><ul><li><a href="{CONTACT}">פגישת אבחון בפרקטי</a></li><li><a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a></li><li><a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a></li><li><a href="/en/">English</a></li></ul></div>
+</div><p style="margin-top:40px">© 2026 עמית טובי · <a href="/clients/">לקוחות</a> · <a href="/yoetz-iski/">יועץ עסקי לפי תחום</a></p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>'''
+
+def NAV_EN():
+    return f'''<nav class="nav" aria-label="Main"><div class="wrap">
+<a class="logo" href="/en/"><i></i>Amit Tobi</a>
+<div class="links" id="menu"><a href="/">עברית</a><a href="/results/">Results</a><a href="/press/">Press kit</a><a href="/lectures/">Speaking</a></div>
+<a class="btn sm" href="{CONTACT}">Free diagnostic call <span class="arr">→</span></a>
+<button class="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
+</div></nav>'''
+def FOOTER_EN():
+    return f'''<footer><div class="wrap"><p>Amit Tobi · Entrepreneur, business consultant and speaker · Co-founder of <a href="https://praktibusiness.com/">Prakti Business Consulting</a> · <a href="https://www.instagram.com/amit_tobi_/" rel="me">Instagram @amit_tobi_</a> · <a href="/">עברית</a></p><p style="margin-top:20px">© 2026 Amit Tobi</p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>'''
 def esc(s): return H.escape(s, quote=False)
 
 def body(faq_html):
     o=[]
     o.append('<div class="progress" aria-hidden="true"></div><div class="spot" aria-hidden="true"></div>')
     o.append(f'<div class="bar">פרקטי ייעוץ עסקי: פגישת אבחון חינם לבעלי עסקי שירות · <a href="{CONTACT}">לקביעת פגישה</a></div>')
-    o.append('''<nav class="nav" aria-label="ניווט ראשי"><div class="wrap">
-<a class="logo" href="/" aria-label="עמית טובי, דף הבית"><i></i>עמית טובי</a>
-<div class="links" id="menu"><a href="/about/">הסיפור</a><a href="#results">תוצאות</a><a href="#free">תכנים חינם</a><a href="#speaking">הרצאות</a><a href="#biz">עסקים</a><a href="/articles/">מאמרים</a><a href="/en/">EN</a></div>
-<a class="btn sm" href="%s">פגישת אבחון <span class="arr">←</span></a>
-<button class="burger" aria-label="תפריט" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
-</div></nav>''' % CONTACT)
+    o.append(NAV('/'))
     # HERO
     o.append(f'''<header class="hero"><canvas aria-hidden="true"></canvas><div class="wrap">
 <div class="copy">
@@ -100,9 +122,9 @@ def body(faq_html):
     o.append(f'''<section id="paths"><div class="wrap">
 <div class="head"><div><p class="eyebrow">מאיפה מתחילים</p><h2 class="h2" data-r>מה <em>אתה</em> צריך?</h2></div></div>
 <div class="doors stag">
-<a class="door" href="/prakti/" data-r><span class="n">01</span><h3>יש לי עסק שירות ואני רוצה לגדול</h3><p>מ-5 עד 35 אלף ש"ח בחודש ל-50, 80 ו-100 אלף ומעלה, עם שיטה ולא עם עוד שעות.</p><span class="go"><i>←</i>ליווי בפרקטי</span></a>
-<a class="door" href="#speaking" data-r><span class="n">02</span><h3>אני מחפש מרצה לארגון או לאירוע</h3><p>יזמות, מכירות, פסיכולוגיה צרכנית, שפת גוף וניהול עובדים. מהשטח, לא מהספרים.</p><span class="go"><i>←</i>נושאי הרצאות</span></a>
-<a class="door" href="#free" data-r><span class="n">03</span><h3>אני רוצה ללמוד בחינם</h3><p>מאמרים ומדריכים על שפת גוף, שיווק, מכירות, אינסטגרם ומוצר כניסה.</p><span class="go"><i>←</i>לתכנים החינמיים</span></a>
+<a class="door" href="/prakti/" data-r><h3>יש לי עסק שירות ואני רוצה לגדול</h3><p>מ-5 עד 35 אלף ש"ח בחודש ל-50, 80 ו-100 אלף ומעלה, עם שיטה ולא עם עוד שעות.</p><span class="go"><i>←</i>ליווי בפרקטי</span></a>
+<a class="door" href="/lectures/" data-r><h3>אני מחפש מרצה לארגון או לאירוע</h3><p>יזמות, מכירות, פסיכולוגיה צרכנית, שפת גוף וניהול עובדים. מהשטח, לא מהספרים.</p><span class="go"><i>←</i>נושאי הרצאות</span></a>
+<a class="door" href="/free/" data-r><h3>אני רוצה ללמוד בחינם</h3><p>מאמרים ומדריכים על שפת גוף, שיווק, מכירות, אינסטגרם ומוצר כניסה.</p><span class="go"><i>←</i>לתכנים החינמיים</span></a>
 </div></div></section>''')
     # MANIFESTO
     o.append('''<section class="mani"><div class="wrap"><blockquote data-hl="משרה.">אם אתה העובד הכי טוב בעסק שלך, אין לך עסק. יש לך משרה.</blockquote><cite>עמית טובי</cite></div></section>''')
@@ -145,7 +167,7 @@ def body(faq_html):
     # FREE HUB
     tp="".join(f'<a class="topic" href="{u}" data-r><span class="cnt">חינם</span><span class="ic" aria-hidden="true">{i}</span><h3>{esc(t)}</h3><p>{esc(p)}</p></a>' for i,t,p,u in TOPICS)
     o.append(f'''<section id="free"><div class="wrap">
-<div class="head"><div><p class="eyebrow">תכנים חינם</p><h2 class="h2" data-r>תיקח. <em>זה בחינם.</em></h2><p class="sub">כל מה שאני מלמד בליווי ובקורסים, מחולק לנושאים. מאמרים, מדריכים וכלים שאפשר ליישם כבר היום.</p></div><a class="more" href="/articles/">כל המאמרים ←</a></div>
+<div class="head"><div><p class="eyebrow">תכנים חינם</p><h2 class="h2" data-r>תיקח. <em>זה בחינם.</em></h2><p class="sub">כל מה שאני מלמד בליווי ובקורסים, מחולק לנושאים. מאמרים, מדריכים וכלים שאפשר ליישם כבר היום.</p></div><a class="more" href="/free/">לכל התכנים ←</a></div>
 <div class="hub stag">{tp}</div></div></section>''')
     # BUSINESSES
     bz="".join(f'<a class="bz{" img" if im else ""}" href="{u}">' + (f'<img src="/img/{im}.webp" alt="{esc(n)}" loading="lazy" decoding="async">' if im else '') + f'<span class="k">{esc(k)}</span>' + (f'<span class="st {c}">{esc(s_)}</span>' if s_ else '') + f'<h3>{esc(n)}</h3><p>{esc(p)}</p></a>' for k,n,s_,c,p,u,im in BIZ)
@@ -172,12 +194,7 @@ def body(faq_html):
     o.append(f'''<section class="final"><div class="wrap"><p class="eyebrow">הצעד הבא</p><h2 class="h2" data-r>אתה לא צריך עוד מוטיבציה. <em>אתה צריך שיטה.</em></h2>
 <div class="ctas" style="justify-content:center"><a class="btn" href="{CONTACT}">לפגישת אבחון חינם <span class="arr">←</span></a><a class="btn ghost" href="https://www.instagram.com/amit_tobi_/" rel="me">אינסטגרם</a></div></div></section>''')
     o.append('</main>')
-    o.append(f'''<footer><div class="wrap"><div class="cols">
-<div><a class="logo" href="/"><i></i>עמית טובי</a><p style="margin-top:14px;max-width:320px">יזם, יועץ עסקי ומרצה. מייסד-שותף בפרקטי ייעוץ עסקי.</p></div>
-<div><h4>עמית</h4><ul><li><a href="/about/">הסיפור</a></li><li><a href="/businesses/">העסקים</a></li><li><a href="/lectures/">הרצאות</a></li><li><a href="/body-language/">שפת גוף</a></li></ul></div>
-<div><h4>ללמוד</h4><ul><li><a href="/articles/">מאמרים</a></li><li><a href="/results/">תוצאות</a></li><li><a href="/reviews/">המלצות</a></li><li><a href="/faq/">שאלות נפוצות</a></li></ul></div>
-<div><h4>קשר</h4><ul><li><a href="{CONTACT}">פגישת אבחון בפרקטי</a></li><li><a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a></li><li><a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a></li><li><a href="/en/">English</a></li></ul></div>
-</div><p style="margin-top:40px">© 2026 עמית טובי</p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>''')
+    o.append(FOOTER())
     return "\n".join(o)
 
 def render(base, faq_html, ld_json, title, desc, noindex=True, canonical="/"):

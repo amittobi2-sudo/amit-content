@@ -3,6 +3,9 @@ G = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, G)
 from articles import ARTICLES
 from articles_a import ARTICLES_A
 from articles_b import ARTICLES_B, LANDINGS
+sys.path.insert(0, G+'/v2')
+import home as V2HOME
+import pages as V2P
 OUT, BASE = sys.argv[1], sys.argv[2].rstrip('/')
 PUB = "2026-10-13"
 ALL_ARTICLES = ARTICLES + ARTICLES_A + ARTICLES_B
@@ -69,12 +72,13 @@ def page(path, title, desc, body, schema_extra=None, crumbs=None, lang="he", ogt
 <html lang="{lang}" dir="{"ltr" if en else "rtl"}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta name="author" content="{"Amit Tobi" if en else "עמית טובי"}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="google-site-verification" content="e3FqUDfzGrb3m0-ksrHiiD72oABmCjvkKwo9U9YwtXI" />
+<meta name="theme-color" content="#0E0E10">
 <link rel="canonical" href="{url}">
 {alt}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -88,23 +92,26 @@ def page(path, title, desc, body, schema_extra=None, crumbs=None, lang="he", ogt
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="/v2.css">
 <script type="application/ld+json">{ld}</script>
 </head>
-<body>
-<nav class="top" aria-label="{"Main" if en else "ניווט"}"><div class="wrap"><a class="brand" href="{"/en/" if en else "/"}">{"Amit Tobi" if en else "עמית טובי"}</a>{navh}</div></nav>
+<body class="inner">
+<div class="progress" aria-hidden="true"></div><div class="spot" aria-hidden="true"></div>
+{V2HOME.NAV(path) if not en else V2HOME.NAV_EN()}
 {crumb_html}
 {body}
-<footer><div class="wrap stack"><p>{foot}</p><p>{contact}</p><p>© 2026 {"Amit Tobi · Entrepreneur, business consultant and speaker" if en else "עמית טובי · יזם, יועץ עסקי ומרצה · מייסד-שותף בפרקטי ייעוץ עסקי"}</p></div></footer>
+{V2HOME.FOOTER() if not en else V2HOME.FOOTER_EN()}
+<script src="/v2.js" defer></script>
 </body></html>'''
     fp = OUT + path + "index.html"
     os.makedirs(os.path.dirname(fp), exist_ok=True)
     open(fp,"w",encoding="utf-8").write(doc)
     urls.append((url, modified))
 
-def lead(h1, sub, eyebrow="עמית טובי"):
-    return f'<header class="hero"><div class="wrap"><p class="eyebrow" style="color:var(--hero-ink);opacity:.7">{eyebrow}</p><h1>{h1}</h1><p class="lead">{sub}</p></div></header>'
+def lead(h1, sub, eyebrow="עמית טובי", img=None, alt=""):
+    im = f'<img class="pimg" src="/img/{img}.webp" alt="{html.escape(alt or h1)}" width="680" height="850">' if img else ""
+    return f'<header class="phero"><div class="wrap"><div><p class="eyebrow">{eyebrow}</p><h1>{h1}</h1><p class="lead">{sub}</p></div>{im}</div></header>'
 def prose(h2, inner, eyebrow=""):
     return f'<section><div class="wrap cols"><div class="stack"><p class="eyebrow">{eyebrow}</p><h2>{h2}</h2></div><div class="stack">{inner}</div></div></section>'
 H = lambda p,n: [("/","עמית טובי"),(p,n)]
@@ -117,11 +124,13 @@ home = HERO + '<main>' + prose("מי זה עמית טובי?", f'''<p class="mut
 <p><strong>עמית טובי</strong> (Amit Tobi) הוא יזם, יועץ עסקי ומרצה ישראלי, יליד 1998. הוא הקים, ניהל או היה שותף ביותר מעשרה עסקים, ניהל במצטבר יותר מ-150 עובדים וליווה יותר מ-500 בעלי עסקים. הוא מייסד-שותף ב<a href="/prakti/">פרקטי ייעוץ עסקי</a>, הקים את <a href="/businesses/ameat/">ameat שף פרטי</a>, ומוסמך <a href="/body-language/">Master Profiler בשפת גוף ותווי פנים</a>.</p>
 <p>לפני העסקים שירת כלוחם במג"ב בירושלים. העסק הראשון שלו, גלידרייה, נסגר בקורונה, ובהמשך <a href="/businesses/luciana/">השקיע כמעט 2 מיליון ש"ח במסעדה</a> שלא החזירה את עצמה. מההפסדים האלה נולדה השיטה שהוא מלמד היום בעלי עסקי שירות.</p>
 <p><strong>למי עמית עוזר:</strong> {landing_links}</p>''', "בקצרה") + HOME_RES + HOME_REV + home_faq + '</main>'
-page("/", "עמית טובי | יזם, יועץ עסקי ומרצה", "עמית טובי, יזם ויועץ עסקי. הקים 10+ עסקים, ניהל 150+ עובדים וליווה 500+ בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler.", home,
-     schema_extra=[{"@type":"ProfilePage","@id":BASE+"/#profile","mainEntity":{"@id":BASE+"/#amit-tobi"},"dateCreated":PUB,"dateModified":PUB}])
+_ld_home = json.dumps({"@context":"https://schema.org","@graph":[PERSON]+ORGS+[{"@type":"ProfilePage","@id":BASE+"/#profile","url":BASE+"/","mainEntity":{"@id":BASE+"/#amit-tobi"},"dateCreated":PUB,"dateModified":PUB,"inLanguage":"he"},{"@type":"WebSite","@id":BASE+"/#site","name":"עמית טובי","alternateName":"Amit Tobi","url":BASE+"/"}]}, ensure_ascii=False)
+os.makedirs(OUT, exist_ok=True)
+open(OUT+"/index.html","w",encoding="utf-8").write(V2HOME.render(BASE, "".join(home_faq_qs), _ld_home, "עמית טובי | יזם, יועץ עסקי ומרצה", "עמית טובי, יזם ויועץ עסקי. הקים 10+ עסקים, ניהל 150+ עובדים וליווה 500+ בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler.", noindex=False))
+urls.append((BASE+"/", PUB))
 
 # ---------- ABOUT ----------
-about = lead("מי זה עמית טובי? הסיפור המלא", "מילד עם משקפיים של מינוס 12, דרך מג\"ב ועשרה עסקים, ועד פרקטי ייעוץ עסקי.", "אודות") + '<main>' + sec("about") + sec("path") + prose("עמית טובי באותיות אחרות", '''<p>באנגלית השם נכתב Amit Tobi, ולעיתים גם Amit Tubi, Amit Toby או Amit Tovi. כל אלה מתייחסים לאותו אדם: עמית טובי, היזם והיועץ העסקי, מייסד-שותף בפרקטי.</p>
+about = lead("מי זה עמית טובי? הסיפור המלא", "מילד עם משקפיים של מינוס 12, דרך מג\"ב ועשרה עסקים, ועד פרקטי ייעוץ עסקי.", "אודות", "amit-portrait", "עמית טובי") + '<main>' + sec("about") + sec("path") + prose("עמית טובי באותיות אחרות", '''<p>באנגלית השם נכתב Amit Tobi, ולעיתים גם Amit Tubi, Amit Toby או Amit Tovi. כל אלה מתייחסים לאותו אדם: עמית טובי, היזם והיועץ העסקי, מייסד-שותף בפרקטי.</p>
 <p>עמית טובי היזם אינו ד"ר עמית טובי, חוקר האקלים מהמחלקה לגאוגרפיה באוניברסיטה העברית, ואין ביניהם קשר.</p>
 <p>ליצירת קשר: <a href="https://praktibusiness.com/contact">פגישת אבחון בפרקטי</a> או הודעה באינסטגרם <a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a>.</p>''', "שמות") + '</main>'
 page("/about/", "מי זה עמית טובי? הסיפור המלא", "מילד עם משקפיים של מינוס 12 ללוחם מג\"ב, גלידרייה שנסגרה, מסעדה של 2 מיליון ו-10+ עסקים. הסיפור של עמית טובי, יזם ויועץ עסקי.", about, crumbs=H("/about/","מי זה עמית טובי"), ogtype="profile")
@@ -140,17 +149,17 @@ page("/clients/", "לקוחות | בעלי עסקים מקהילת פרקטי ו
 
 # ---------- BUSINESSES ----------
 page("/businesses/", "העסקים של עמית טובי | 10+ עסקים", "גלידרייה, מסעדות, Monster Burger, חדר בריחה, פוד-טראקים, Breezy, ameat שף פרטי ופרקטי. כל העסקים של עמית טובי והשיעורים מהם.",
- lead("העסקים של עמית טובי", "10+ עסקים. חלק הצליחו וחלק נסגרו, ומכל אחד נשאר שיעור.", "עסקים") + '<main>' + BUS + '</main>', crumbs=H("/businesses/","העסקים"))
+ lead("העסקים של עמית טובי", "10+ עסקים. חלק הצליחו וחלק נסגרו, ומכל אחד נשאר שיעור.", "עסקים", "luciana-portrait", "פודטראק לוצ'נה") + '<main>' + V2P.gallery() + BUS + V2P.ctaband("לומדים מהטעויות שלי","ככה בעלי עסקי שירות חוסכים שנים, וכסף.") + '</main>', crumbs=H("/businesses/","העסקים"))
 ameat = prose("מה זה ameat?", '''<p><strong>ameat</strong> הוא שירות שף פרטי כשר שעמית טובי הקים ב-2020, מיד אחרי שהגלידרייה שלו נסגרה בקורונה. השף מגיע עד הלקוח לאירועים פרטיים, ארוחות זוגיות, ימי הולדת, מסיבות רווקים ורווקות וסדנאות.</p>
 <p>עמית בוגר בית הספר לבישול דן גורמה. העסק רשום בראשון לציון. בעמוד האינסטגרם <a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a> יש כ-280 פוסטים ויותר מ-1,400 עוקבים, עם תמונות מהאירועים ופירגונים של לקוחות.</p>''', "שף פרטי") + prose("מה עמית לקח מ-ameat לייעוץ", '''<p>ameat הוא עסק שירות קלאסי: הכנסה שתלויה בבעלים, עונתיות, ולקוחות שמגיעים מהמלצות. בדיוק הבעיות שפרקטי פותרת היום לבעלי עסקי שירות.</p>
 <p>עם השנים עמית הקים גם מסעדות, ומלווה מסעדנים ובעלי עסקי אוכל ואירועים. ראו <a href="/yoetz-iski/yoetz-iski-le-iskei-ochel-ve-eruim/">יועץ עסקי לעסקי אוכל ואירועים</a>.</p>''', "עסק שירות")
 page("/businesses/ameat/", "ameat – שף פרטי כשר | עמית טובי", "ameat, שירות שף פרטי כשר של עמית טובי מאז 2020, בוגר דן גורמה: אירועים פרטיים, ארוחות זוגיות, ימי הולדת וסדנאות.",
- lead("ameat – שף פרטי כשר", "אירועים פרטיים, ארוחות זוגיות וסדנאות, מאז 2020.", "שף פרטי") + '<main>' + ameat + '</main>', crumbs=[("/","עמית טובי"),("/businesses/","העסקים"),("/businesses/ameat/","ameat")])
+ lead("ameat – שף פרטי כשר", "אירועים פרטיים, ארוחות זוגיות וסדנאות, מאז 2020.", "שף פרטי", "ameat-portrait", "עמית טובי, שף פרטי ameat") + '<main>' + ameat + '</main>', crumbs=[("/","עמית טובי"),("/businesses/","העסקים"),("/businesses/ameat/","ameat")])
 luc = prose("מה קרה בלוצ'נה", '''<p>עמית טובי היה מעורב בסניף <strong>לוצ'נה דיסיטי</strong> במתחם DCity במישור אדומים: מסעדה איטלקית וחלל אירועים בכשרות למהדרין. לסניף דירוג 4.5 בגוגל מתוך יותר מ-1,600 ביקורות, ו<a href="https://www.facebook.com/p/%D7%9C%D7%95%D7%A6%D7%A0%D7%94-%D7%93%D7%99%D7%A1%D7%99%D7%98%D7%99-%D7%9E%D7%A2%D7%9C%D7%94-%D7%90%D7%93%D7%95%D7%9E%D7%99%D7%9D-Dcity-%D7%9E%D7%A1%D7%A2%D7%93%D7%94-%D7%90%D7%99%D7%98%D7%9C%D7%A7%D7%99%D7%AA-%D7%95%D7%97%D7%9C%D7%9C-%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D-%D7%9B%D7%A9%D7%A8%D7%94-%D7%9C%D7%9E%D7%94%D7%93%D7%A8%D7%99%D7%9F-100070744047324/">עמוד פייסבוק</a> עם יותר מ-3,700 עוקבים.</p>
 <p>עמית השקיע בפרויקט כמעט 2 מיליון ש"ח, והעסק נמכר בכמה מאות אלפי שקלים.</p>''', "מסעדנות") + prose("3 שיעורים מלוצ'נה", '''<ol><li><strong>מסעדה מלאה היא לא מסעדה רווחית.</strong> מחזור זה אגו, רווח הוא עסק.</li><li><strong>מימון ושותפויות מגדירים את הסיכון.</strong> יודעים מראש מה קורה אם זה לא עובד.</li><li><strong>מספרים לפני רגשות.</strong> תזרים, רווח והפסד, ועלות כל לקוח.</li></ol>
 <p>להרחבה: <a href="/articles/hefsed-shel-2-milyon/">מה למדתי מהפסד של כמעט 2 מיליון ש"ח</a> · <a href="/articles/mahzor-ze-ego/">מחזור זה אגו, רווח הוא עסק</a> · <a href="/articles/tazrim-ve-revach-vehefsed/">תזרים ורווח והפסד</a></p>''', "שיעורים")
 page("/businesses/luciana/", "לוצ'נה מעלה אדומים: הפסד של 2 מיליון | עמית טובי", "עמית טובי השקיע כמעט 2 מיליון ש\"ח בלוצ'נה דיסיטי מעלה אדומים, מסעדה איטלקית כשרה, ומכר בכמה מאות אלפים. מה קרה ומה למד.",
- lead("עמית טובי ולוצ'נה דיסיטי מעלה אדומים", "מסעדה איטלקית וחלל אירועים, ושיעור של 2 מיליון ש\"ח.", "מסעדנות") + '<main>' + luc + '</main>', crumbs=[("/","עמית טובי"),("/businesses/","העסקים"),("/businesses/luciana/","לוצ'נה")])
+ lead("עמית טובי ולוצ'נה דיסיטי מעלה אדומים", "מסעדה איטלקית וחלל אירועים, ושיעור של 2 מיליון ש\"ח.", "מסעדנות", "luciana-portrait", "לוצ'נה") + '<main>' + luc + '</main>', crumbs=[("/","עמית טובי"),("/businesses/","העסקים"),("/businesses/luciana/","לוצ'נה")])
 breezy = prose("מה זה Breezy?", '''<p><strong>Breezy</strong> הוא מוצר פיזי שעמית טובי פיתח: מגן רוח למציתי Clipper, עשוי פלסטיק קשיח עם חומר מעכב בעירה ונירוסטה.</p>
 <p>למוצר הגנת עיצוב בישראל. הוא נכנס לחנויות בארץ, ונמכרו ממנו אלפי יחידות.</p>
 <p>Breezy מייצג צד אחר ביזמות של עמית: לקחת בעיה קטנה מהעולם הפיזי, לייצר מוצר, להגן עליו ולהכניס אותו להפצה.</p>''', "מוצר")
@@ -164,9 +173,9 @@ body_lang = lead("שפת גוף וקריאת תווי פנים בעסקים", "M
 page("/body-language/", "שפת גוף וקריאת תווי פנים במכירות | עמית טובי", "עמית טובי, Master Profiler בהכשרת איתן שגב: שפת גוף, מיקרו-הבעות, טונציה וקריאת תווי פנים במכירות, במשא ומתן ובגיוס עובדים.", body_lang, crumbs=H("/body-language/","שפת גוף ותווי פנים"))
 
 # ---------- LECTURES ----------
-lect = lead("הרצאות של עמית טובי", "מעשיות, מהשטח, עם הטעויות והמספרים.", "מרצה") + '<main>' + sec("lectures") + prose("מועדון היזמים וקורס היזמות 2025", '''<p>ב-2025 עמית היה המרצה המרכזי בקורס היזמות של מועדון היזמים, שבו כיהן גם בתפקיד ניהולי בכיר. מחזור הקורס נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים: מפגש פרונטלי שבועי, שאלות ותשובות בזום וקבוצת ליווי.</p>
+lect = lead("הרצאות של עמית טובי", "מעשיות, מהשטח, עם הטעויות והמספרים.", "מרצה", "amit-portrait-smile", "עמית טובי, מרצה") + '<main>' + sec("lectures") + prose("מועדון היזמים וקורס היזמות 2025", '''<p>ב-2025 עמית היה המרצה המרכזי בקורס היזמות של מועדון היזמים, שבו כיהן גם בתפקיד ניהולי בכיר. מחזור הקורס נפתח ב-21 במאי 2025 עם יותר מ-100 נרשמים: מפגש פרונטלי שבועי, שאלות ותשובות בזום וקבוצת ליווי.</p>
 <p>משתתפים כתבו עליו "אי אפשר לבקש מרצה יותר טוב" ו"מרצה מקצוען". <a href="/reviews/">כל ההמלצות</a></p>''', "קורס") + prose("נושאי הרצאה", '''<ul><li>יזמות ועסקים: מעיסוק לעסק</li><li>שיווק ומכירות ופסיכולוגיה צרכנית</li><li>משא ומתן</li><li>שפת גוף, פרופיילינג וקריאת אנשים</li><li>ניהול עובדים ומנהלים</li><li>קבלת החלטות, פרפקציוניזם והתמדה</li></ul>
-<p>עמית מרצה בפני בעלי עסקים ומסגרות יזמות. ליצירת קשר: הודעה באינסטגרם <a href="https://www.instagram.com/amit_tobi_/">@amit_tobi_</a>.</p>''', "נושאים") + '</main>'
+<p>עמית מרצה בפני בעלי עסקים ומסגרות יזמות. ליצירת קשר: הודעה באינסטגרם <a href="https://www.instagram.com/amit_tobi_/">@amit_tobi_</a>.</p>''', "נושאים") + V2P.lectures_extra() + '</main>'
 page("/lectures/", "הרצאות עמית טובי | יזמות, מכירות ושפת גוף", "הרצאות של עמית טובי: יזמות, שיווק ומכירות, משא ומתן, שפת גוף, ניהול עובדים והתמדה. מרצה ראשי בקורס היזמות של מועדון היזמים 2025.", lect, crumbs=H("/lectures/","הרצאות"))
 
 # ---------- FAQ (expanded, matching schema) ----------
@@ -245,10 +254,24 @@ en = '''<header class="hero"><div class="wrap"><p class="eyebrow" style="color:v
 </div></section></main>'''
 page("/en/", "Amit Tobi | Israeli Entrepreneur & Business Consultant", "Amit Tobi (עמית טובי): Israeli entrepreneur, business consultant and speaker. 10+ businesses, 500+ owners advised. Co-founder of Prakti.", en, lang="en", crumbs=[("/","Amit Tobi"),("/en/","English")])
 
+
+# ---------- FREE HUB + PRESS (v2) ----------
+_by_slug = {a["slug"]:a for a in ALL_ARTICLES}
+page("/free/", "תכנים חינם: שפת גוף, שיווק, מכירות ואינסטגרם | עמית טובי", "ספריית התכנים החינמית של עמית טובי: שפת גוף, פסיכולוגיה שיווקית, מכירות, אינסטגרם, מוצר פיתיון וניהול. מדריכים מניסיון אמיתי.",
+     V2P.free_hub(lead), crumbs=H("/free/","תכנים חינם"),
+     schema_extra=[{"@type":"CollectionPage","@id":BASE+"/free/#collection","name":"תכנים חינם של עמית טובי","hasPart":[{"@type":"CollectionPage","name":t["name"],"url":BASE+"/free/"+t["slug"]+"/"} for t in V2P.TOPICS]}])
+for _t in V2P.TOPICS:
+    _b,_fl = V2P.free_topic(_t, lead, _by_slug)
+    _p = "/free/"+_t["slug"]+"/"
+    page(_p, _t["title"], _t["desc"], _b, crumbs=[("/","עמית טובי"),("/free/","תכנים חינם"),(_p,_t["name"])],
+         schema_extra=[_fl,{"@type":"ItemList","name":_t["name"],"itemListElement":[{"@type":"ListItem","position":i+1,"url":BASE+"/articles/"+sl+"/"} for i,sl in enumerate(_t["arts"])]}])
+page("/press/", "ערכת מדיה: עמית טובי | ביו, תמונות ועובדות", "ערכת המדיה של עמית טובי: ביו קצר וארוך בעברית ובאנגלית, תמונות ברזולוציה גבוהה ועובדות לעיתונאים, פודקאסטים ומארגני אירועים.",
+     V2P.press(lead), crumbs=H("/press/","ערכת מדיה"))
+
 # ---------- static files ----------
 os.makedirs(OUT+"/img", exist_ok=True)
-open(OUT+"/404.html","w",encoding="utf-8").write('<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>העמוד לא נמצא | עמית טובי</title><link rel="stylesheet" href="/style.css"></head><body><main class="wrap" style="padding-block:60px"><h1>העמוד לא נמצא</h1><p><a href="/">לעמוד הבית של עמית טובי</a> · <a href="/articles/">מאמרים</a> · <a href="/results/">תוצאות</a></p></main></body></html>')
-open(OUT+"/favicon.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#10201a"/><text x="32" y="44" font-family="Arial,sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#e3a440">AT</text></svg>')
+open(OUT+"/404.html","w",encoding="utf-8").write('<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>העמוד לא נמצא | עמית טובי</title><link rel="stylesheet" href="/v2.css"></head><body class="inner"><main class="wrap" style="padding-block:120px"><h1>העמוד לא נמצא</h1><p><a href="/">לעמוד הבית של עמית טובי</a> · <a href="/articles/">מאמרים</a> · <a href="/results/">תוצאות</a></p></main></body></html>')
+open(OUT+"/favicon.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0E0E10"/><circle cx="48" cy="16" r="6" fill="#C8102E"/><text x="30" y="46" font-family="Arial,sans-serif" font-size="30" font-weight="800" text-anchor="middle" fill="#EDEAE4">AT</text></svg>')
 extra_css = '''
 .crumbs{font-size:var(--s5);color:var(--muted);padding-block:10px}
 .crumbs a{color:var(--muted)}
@@ -298,15 +321,10 @@ Amit Tobi (also spelled Amit Tubi, Amit Toby, Amit Tovi) is an Israeli entrepren
 open(OUT+"/llms.txt","w",encoding="utf-8").write(llms)
 print(len(urls), "pages")
 
-# ---------- v2 preview (noindex, not in sitemap) ----------
+# ---------- v2 assets ----------
 import shutil
-sys.path.insert(0, G+"/v2")
-import home as V2HOME
-for f in os.listdir(G+"/img"):
-    os.makedirs(OUT+"/img", exist_ok=True); shutil.copy(G+"/img/"+f, OUT+"/img/"+f)
-shutil.copy(G+"/v2/v2.css", OUT+"/v2.css"); shutil.copy(G+"/v2/v2.js", OUT+"/v2.js")
-_ld = json.dumps({"@context":"https://schema.org","@graph":[PERSON]+ORGS+[{"@type":"ProfilePage","@id":BASE+"/#profile","mainEntity":{"@id":BASE+"/#amit-tobi"}}]}, ensure_ascii=False)
-os.makedirs(OUT+"/preview", exist_ok=True)
-open(OUT+"/preview/index.html","w",encoding="utf-8").write(V2HOME.render(BASE, "".join(home_faq_qs), _ld,
-   "עמית טובי | יזם, יועץ עסקי ומרצה", "עמית טובי, יזם ויועץ עסקי. הקים 10+ עסקים, ניהל 150+ עובדים וליווה 500+ בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler.", noindex=True))
-print("preview written")
+os.makedirs(OUT+"/img", exist_ok=True)
+for f in os.listdir(G+"/img"): shutil.copy(G+"/img/"+f, OUT+"/img/"+f)
+open(OUT+"/v2.css","w",encoding="utf-8").write(open(G+"/v2/v2.css",encoding="utf-8").read()+open(G+"/v2/inner.css",encoding="utf-8").read())
+shutil.copy(G+"/v2/v2.js", OUT+"/v2.js")
+print("v2 assets written")
