@@ -4,6 +4,8 @@ import html as H
 
 CONTACT = "https://praktibusiness.com/contact"
 IG = "https://www.instagram.com/amit_tobi_/"
+MAIL = "mailto:amittobi@gmail.com?subject=%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%A8%D7%A6%D7%90%D7%94"
+MAILP = "mailto:amittobi@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%9E%D7%94%D7%AA%D7%A7%D7%A9%D7%95%D7%A8%D7%AA"
 
 TOPICS = [
  {"slug":"safat-guf","name":"שפת גוף","title":"שפת גוף בעסקים: מדריכים חינם | עמית טובי",
@@ -120,7 +122,7 @@ def lectures_extra():
     quotes="".join(f'<figure class="q"><p>{e(t)}</p><span>{e(w)}</span></figure>' for t,w in [("אי אפשר לבקש מרצה יותר טוב","משתתפת בקורס היזמות"),("מרצה מקצוען","משתתף בקורס היזמות"),("הראש שלי לא הפסיק לעבוד","משתתף בקורס היזמות"),("פתחת לי עולם","משתתפת בקורס היזמות"),("המפגש הפיל לי אסימונים.","נתנאל ש."),("הגעתי לקורס רגע לפני שהתייאשתי.","גאולה ל.")])
     return f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">נושאים</p><h2>על מה אני מדבר</h2></div></div><div class="cards">{cards}</div></div></section>' + \
       f'<section class="quotes"><div class="wrap"><div class="head"><div><p class="eyebrow">מהקהל</p><h2>מה אמרו משתתפים</h2></div></div></div><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
-      ctaband("רוצה הרצאה לארגון או לאירוע?","שלחו הודעה באינסטגרם עם תאריך, קהל ונושא, ואחזור אליכם.", IG, "להזמנת הרצאה באינסטגרם")
+      ctaband("רוצה הרצאה לארגון או לאירוע?","כתבו לי ל-amittobi@gmail.com עם תאריך, קהל ונושא, ואחזור אליכם.", MAIL, "להזמנת הרצאה במייל")
 
 BIO_HE_S = "עמית טובי הוא יזם, יועץ עסקי ומרצה. הקים יותר מ-10 עסקים, ניהל יותר מ-150 עובדים וליווה יותר מ-500 בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler מטעם איתן שגב."
 BIO_HE_L = "עמית טובי (Amit Tobi), יליד 1998, הוא יזם, יועץ עסקי ומרצה ישראלי. אחרי שירות קרבי במג\"ב בירושלים פתח גלידרייה שלא שרדה את הקורונה, הקים את ameat, שירות שף פרטי כשר, והשקיע כמעט 2 מיליון ש\"ח במסעדת לוצ'נה במעלה אדומים. לאורך הדרך הקים, ניהל או היה שותף ביותר מ-10 עסקים וניהל יותר מ-150 עובדים. ב-2025 היה המרצה הראשי של קורס היזמות במועדון היזמים, ובסוף 2025 הקים עם דור שלום ועומר וסרמן את פרקטי ייעוץ עסקי, שמלווה בעלי עסקי שירות. עמית הוא Master Profiler מטעם איתן שגב ומרצה על יזמות, מכירות, פסיכולוגיה צרכנית, שפת גוף וניהול עובדים."
@@ -130,9 +132,9 @@ def press(lead):
     kit=[("press-amit-tobi-1","דיוקן"),("press-amit-tobi-2","ידיים שלובות"),("press-amit-tobi-3","חיוך"),("press-prakti-founders","מייסדי פרקטי")]
     kith="".join(f'<a href="/img/{f}.webp" download><img src="/img/{f}.webp" alt="עמית טובי, {e(n)}" loading="lazy"><span>{e(n)} · הורדה</span></a>' for f,n in kit)
     bios="".join(f'<div class="bio" data-r><button class="copy" data-copy>העתקה</button><p class="eyebrow">{e(h)}</p><p style="margin-top:10px" {"dir=ltr" if en else ""}>{e(t)}</p></div>' for h,t,en in [("ביו קצר",BIO_HE_S,False),("ביו מלא",BIO_HE_L,False),("English bio",BIO_EN,True)])
-    facts="".join(f'<li><b>{e(a)}</b> {e(b)}</li>' for a,b in [("שם","עמית טובי (Amit Tobi)"),("תפקיד","יזם, יועץ עסקי ומרצה"),("חברה","פרקטי ייעוץ עסקי (מייסד-שותף, עם דור שלום ועומר וסרמן)"),("הסמכה","Master Profiler, איתן שגב"),("במספרים","10+ עסקים, 150+ עובדים, 500+ בעלי עסקים"),("בטלוויזיה","\"גלית ויואב\", כבעלים של מסעדת לוצ'נה"),("נושאי הרצאה","יזמות, מכירות, פסיכולוגיה צרכנית, משא ומתן, שפת גוף, ניהול עובדים")])
+    facts="".join(f'<li><b>{e(a)}</b> {e(b)}</li>' for a,b in [("שם","עמית טובי (Amit Tobi)"),("תפקיד","יזם, יועץ עסקי ומרצה"),("חברה","פרקטי ייעוץ עסקי (מייסד-שותף, עם דור שלום ועומר וסרמן)"),("הסמכה","Master Profiler, איתן שגב"),("במספרים","10+ עסקים, 150+ עובדים, 500+ בעלי עסקים"),("בטלוויזיה","\"גלית ויואב\", כבעלים של מסעדת לוצ'נה"),("קשר","amittobi@gmail.com"),("נושאי הרצאה","יזמות, מכירות, פסיכולוגיה צרכנית, משא ומתן, שפת גוף, ניהול עובדים")])
     return lead("ערכת מדיה", "ביו, תמונות ועובדות לעיתונאים, לפודקאסטים ולמארגני אירועים. החומרים מיועדים לשימוש תקשורתי, עם קרדיט לעמית טובי.", "לתקשורת", "amit-portrait", "עמית טובי, תמונת סטודיו") + \
       f'<main><section><div class="wrap"><div class="head"><div><p class="eyebrow">ביוגרפיה</p><h2>ביו מוכן להעתקה</h2></div></div><div class="stack">{bios}</div></div></section>' + \
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תמונות</p><h2>תמונות ברזולוציה גבוהה</h2></div></div><div class="kit">{kith}</div></div></section>' + \
       f'<section><div class="wrap cols"><div class="stack"><p class="eyebrow">עובדות</p><h2>בקצרה</h2></div><ul class="stack" style="list-style:none">{facts}</ul></div></section>' + \
-      ctaband("ראיון, פודקאסט או הרצאה?","הכי מהיר: הודעה באינסטגרם.", IG, "לפנייה באינסטגרם") + '</main>'
+      ctaband("ראיון, פודקאסט או הרצאה?","מייל: amittobi@gmail.com, או הודעה באינסטגרם @amit_tobi_.", MAILP, "לפנייה במייל") + '</main>'

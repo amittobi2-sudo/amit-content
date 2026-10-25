@@ -69,7 +69,7 @@ def FOOTER():
 <div><a class="logo" href="/"><i></i>עמית טובי</a><p style="margin-top:14px;max-width:320px">יזם, יועץ עסקי ומרצה. מייסד-שותף בפרקטי ייעוץ עסקי.</p></div>
 <div><h4>עמית</h4><ul><li><a href="/about/">הסיפור</a></li><li><a href="/businesses/">העסקים</a></li><li><a href="/lectures/">הרצאות</a></li><li><a href="/press/">ערכת מדיה</a></li><li><a href="/body-language/">שפת גוף</a></li></ul></div>
 <div><h4>ללמוד</h4><ul><li><a href="/free/">תכנים חינם</a></li><li><a href="/articles/">מאמרים</a></li><li><a href="/results/">תוצאות</a></li><li><a href="/reviews/">המלצות</a></li><li><a href="/faq/">שאלות נפוצות</a></li></ul></div>
-<div><h4>קשר</h4><ul><li><a href="{CONTACT}">פגישת אבחון בפרקטי</a></li><li><a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a></li><li><a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a></li><li><a href="/en/">English</a></li></ul></div>
+<div><h4>קשר</h4><ul><li><a href="{CONTACT}">פגישת אבחון בפרקטי</a></li><li><a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a></li><li><a href="mailto:amittobi@gmail.com">amittobi@gmail.com</a></li><li><a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a></li><li><a href="/en/">English</a></li></ul></div>
 </div><p style="margin-top:40px">© 2026 עמית טובי · <a href="/clients/">לקוחות</a> · <a href="/yoetz-iski/">יועץ עסקי לפי תחום</a></p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>'''
 
 def NAV_EN():
@@ -178,7 +178,7 @@ def body(faq_html):
     sp="".join(f'<li>{esc(a)}<span>{esc(b)}</span></li>' for a,b in SPEAK)
     o.append(f'''<section class="speak" id="speaking"><div class="wrap">
 <div><p class="eyebrow">הרצאות</p><h2 class="h2" data-r>על הבמה, <em>מהשטח.</em></h2><p class="sub">הרצאות לארגונים, לקהילות ולבעלי עסקים. בלי סיסמאות מוטיבציה: סיפורים אמיתיים, מספרים אמיתיים וכלים שעובדים למחרת בבוקר.</p>
-<div class="ctas" style="margin-top:30px"><a class="btn" href="/lectures/">להזמנת הרצאה <span class="arr">←</span></a></div></div>
+<div class="ctas" style="margin-top:30px"><a class="btn" href="/lectures/">להזמנת הרצאה <span class="arr">←</span></a><a class="btn ghost" href="mailto:amittobi@gmail.com?subject=%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%A8%D7%A6%D7%90%D7%94">amittobi@gmail.com</a></div></div>
 <div><img class="speak-img" src="/img/amit-smile.webp" width="900" height="972" alt="עמית טובי, מרצה" loading="lazy"><ul class="topics-list stag">{sp}</ul></div>
 </div></section>''')
     # WHO (entity block)

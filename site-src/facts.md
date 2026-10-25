@@ -58,3 +58,4 @@ Sales: help client define the problem, what it costs, why not solved yet, see th
 - Old businesses shown in his photos: the ice cream shop branding "The Gelato Factory"; escape room "החתונה" (Rishon LeZion, 70 minutes, 2-7 players); "Grill Bar Pop Up" (at the Luciana complex); Luciana food truck and tram kiosk; Luciana event hall; Monster Burger branch; a food kiosk; ameat private chef setups.
 - Studio photo shoot (2026) incl. a photo of the three Prakti founders together.
 - Family photos received: do NOT publish (privacy, especially the baby). Keep "married, father" only.
+- Public contact email for lectures/press (Amit, Oct 25 2026): amittobi@gmail.com. TV "גלית ויואב" year possibly 2022, unconfirmed: do not publish the year.
