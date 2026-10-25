@@ -297,3 +297,16 @@ Amit Tobi (also spelled Amit Tubi, Amit Toby, Amit Tovi) is an Israeli entrepren
 ''' + "".join(f"- [{t_of(p)}]({BASE}{p})\n" for p in pages)
 open(OUT+"/llms.txt","w",encoding="utf-8").write(llms)
 print(len(urls), "pages")
+
+# ---------- v2 preview (noindex, not in sitemap) ----------
+import shutil
+sys.path.insert(0, G+"/v2")
+import home as V2HOME
+for f in os.listdir(G+"/img"):
+    os.makedirs(OUT+"/img", exist_ok=True); shutil.copy(G+"/img/"+f, OUT+"/img/"+f)
+shutil.copy(G+"/v2/v2.css", OUT+"/v2.css"); shutil.copy(G+"/v2/v2.js", OUT+"/v2.js")
+_ld = json.dumps({"@context":"https://schema.org","@graph":[PERSON]+ORGS+[{"@type":"ProfilePage","@id":BASE+"/#profile","mainEntity":{"@id":BASE+"/#amit-tobi"}}]}, ensure_ascii=False)
+os.makedirs(OUT+"/preview", exist_ok=True)
+open(OUT+"/preview/index.html","w",encoding="utf-8").write(V2HOME.render(BASE, "".join(home_faq_qs), _ld,
+   "עמית טובי | יזם, יועץ עסקי ומרצה", "עמית טובי, יזם ויועץ עסקי. הקים 10+ עסקים, ניהל 150+ עובדים וליווה 500+ בעלי עסקים. מייסד-שותף בפרקטי ייעוץ עסקי ו-Master Profiler.", noindex=True))
+print("preview written")

@@ -52,3 +52,9 @@ Sales: help client define the problem, what it costs, why not solved yet, see th
 
 ## Rules
 - No phone numbers anywhere. No fabricated reviews, stats, awards, media appearances. No hidden text or keyword stuffing. Hebrew, plain, short sentences. Write in Amit's first-person voice for articles, third person for bio pages.
+
+## Added Oct 25, 2026 (photos/videos Amit sent directly)
+- TV: appeared on the Israeli TV show "גלית ויואב" as owner of Luciana ("עמית טובי, בעלי מסעדת לוצ'נה מעלה אדומים"), segment on ravioli. Channel/date not given; do not invent them.
+- Old businesses shown in his photos: the ice cream shop branding "The Gelato Factory"; escape room "החתונה" (Rishon LeZion, 70 minutes, 2-7 players); "Grill Bar Pop Up" (at the Luciana complex); Luciana food truck and tram kiosk; Luciana event hall; Monster Burger branch; a food kiosk; ameat private chef setups.
+- Studio photo shoot (2026) incl. a photo of the three Prakti founders together.
+- Family photos received: do NOT publish (privacy, especially the baby). Keep "married, father" only.
