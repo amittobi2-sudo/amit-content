@@ -72,10 +72,20 @@ def art_cards(slugs, by_slug):
 def ctaband(h, p, href=CONTACT, label="לפגישת אבחון חינם"):
     return f'<section><div class="wrap"><div class="ctaband" data-r><div><h2>{h}</h2><p class="muted" style="margin-top:12px">{p}</p></div><a class="btn" href="{href}">{label} <span class="arr">←</span></a></div></div></section>'
 
+
+WORKBOOKS=[(1,"idea-to-method","מהרעיון לשיטה"),(2,"offer","הצעה שקל לקנות"),(3,"marketing","שיווק שמביא פניות"),(4,"sales","מכירה בלי לחץ"),(5,"service-growth","שירות שמייצר צמיחה")]
+def downloads_section(title="חוברות העבודה להורדה", sub="חוברת לכל שלב, עם הסברים, תרגילים למילוי וצ'קליסט. בחינם, בלי הרשמה."):
+    cards="".join(f'<a class="card" href="/downloads/amit-tobi-workbook-{n}-{f}.pdf" download data-r><span class="k">PDF · שלב {n} מתוך 5</span><h3>{e(t)}</h3><p>חוברת עבודה</p><span class="go">הורדה ←</span></a>' for n,f,t in WORKBOOKS)
+    return f'<section id="downloads"><div class="wrap"><div class="head"><div><p class="eyebrow">להורדה</p><h2>{title}</h2><p class="muted" style="margin-top:12px">{sub}</p></div></div><div class="cards">{cards}</div></div></section>'
+SUMMARIES=[("mekorot-shivuk","מקורות שיווק"),("shivuk-begoogle-leaskei-sherut","שיווק בגוגל"),("kopiraiting-leaskei-sherut","קופירייטינג"),("mashpech-shivuk","משפך שיווקי"),("madadei-shivuk","מדדי שיווק"),("pituach-iski-veskeil","פיתוח עסקי וסקייל")]
+def summaries_section():
+    cards="".join(f'<a class="card" href="/downloads/summary-{s}.pdf" download data-r><span class="k">PDF · דף סיכום</span><h3>{e(t)}</h3><span class="go">הורדה ←</span></a>' for s,t in SUMMARIES)
+    return f'<section id="summaries"><div class="wrap"><div class="head"><div><p class="eyebrow">להורדה</p><h2>דפי סיכום</h2><p class="muted" style="margin-top:12px">סיכום של כל שיעור, בדף אחד להדפסה.</p></div></div><div class="cards">{cards}</div></div></section>'
+
 def free_hub(lead):
     cards="".join(f'<a class="topic" href="/free/{t["slug"]}/" data-r><span class="cnt">חינם · {len(t["arts"])} מדריכים</span><span class="ic" aria-hidden="true">{ICONS[t["slug"]]}</span><h3>{t["name"]}</h3><p>{t["sub"]}</p></a>' for t in TOPICS)
     body = lead("תכנים חינם", "כל מה שאני מלמד בליווי ובקורסים, מחולק לנושאים. מאמרים ומדריכים שאפשר ליישם כבר היום, בלי הרשמה ובלי תשלום.", "ספריית תכנים") + \
-      f'<main><section><div class="wrap"><div class="hub stag hub6">{cards}</div></div></section>' + \
+      f'<main><section><div class="wrap"><div class="hub stag hub6">{cards}</div></div></section>' + summaries_section() + downloads_section() + \
       ctaband("רוצה שנעשה את זה יחד?","בפגישת אבחון חינם בפרקטי בודקים את מקורות הלקוחות, התמחור וצוואר הבקבוק של העסק שלך.") + '</main>'
     return body
 
@@ -181,7 +191,7 @@ def course(lead):
       '<p>הקורס עובר בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה, ושירות שמייצר צמיחה. אותו סדר שבו אני בונה עסקים מאז הגלידרייה.</p></div></div></section>' + \
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">הסילבוס</p><h2>5 שלבים, 12 שיעורים</h2></div></div>{blocks}</div></section>' + \
       f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">תוצאות</p><h2>מה קרה למשתתפים</h2><p class="muted" style="margin-top:12px">הודעות שמשתתפי מחזור מאי 2025 שלחו לקבוצת הקורס.</p></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div><div class="grid2">{res}</div></div></section>' + \
-      f'<section class="quotes"><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
+      downloads_section() + f'<section class="quotes"><div class="qrow"><div class="qtrack">{quotes}</div></div></section>' + \
       ctaband("רוצה את הקורס לארגון או לקבוצה?","כתבו לי ל-amittobi@gmail.com, ואחזור עם פרטים.", MAIL, "לפנייה במייל") + '</main>'
     ld = {"@type":"Course","name":"קורס היזמות של עמית טובי","description":"קורס יזמות בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה ושירות שמייצר צמיחה.","inLanguage":"he","provider":{"@type":"Person","name":"עמית טובי"},
           "hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","startDate":"2025-05-21","instructor":{"@type":"Person","name":"עמית טובי"}}}

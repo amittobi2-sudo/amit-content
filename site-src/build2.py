@@ -209,7 +209,7 @@ for i,a in enumerate(ALL_ARTICLES):
            "author":{"@id":BASE+"/#amit-tobi","@type":"Person","name":"עמית טובי","url":BASE+"/about/"},"publisher":{"@id":BASE+"/#amit-tobi"},
            "datePublished":PUB,"dateModified":PUB,"inLanguage":"he","mainEntityOfPage":url}
     body = lead(a["title"], f'מאת <a href="/about/" style="color:var(--hero-ink)">עמית טובי</a>, יזם ויועץ עסקי · {PUB}', "מאמר") + \
-      f'<main><section><div class="wrap"><article class="stack" style="max-width:68ch">{a["body"]}<p class="muted">עמית טובי הוא יזם, יועץ עסקי ומרצה, מייסד-שותף ב<a href="/prakti/">פרקטי ייעוץ עסקי</a>. <a href="/results/">תוצאות לקוחות</a> · <a href="/reviews/">המלצות</a></p>{related(i)}</article></div></section></main>'
+      f'<main><section><div class="wrap">' + (f'<a class="card" href="/downloads/summary-{a["slug"]}.pdf" download style="max-width:72ch;margin-bottom:28px;min-height:0"><span class="k">להורדה · PDF</span><h3>דף סיכום של השיעור</h3><span class="go">הורדה ←</span></a>' if os.path.exists(G+f'/downloads/summary-{a["slug"]}.pdf') else '') + f'<article class="stack" style="max-width:68ch">{a["body"]}<p class="muted">עמית טובי הוא יזם, יועץ עסקי ומרצה, מייסד-שותף ב<a href="/prakti/">פרקטי ייעוץ עסקי</a>. <a href="/results/">תוצאות לקוחות</a> · <a href="/reviews/">המלצות</a></p>{related(i)}</article></div></section></main>'
     t = a["title"] if len(a["title"])>55 else a["title"]+" | עמית טובי"
     page(p, t, a["desc"], body, crumbs=[("/","עמית טובי"),("/articles/","מאמרים"),(p,a["title"])], ogtype="article", schema_extra=[art])
     items += f'<article class="post"><h3><a href="{p}">{a["title"]}</a></h3><p class="muted">{a["desc"]}</p></article>'
@@ -330,5 +330,5 @@ import shutil
 os.makedirs(OUT+"/img", exist_ok=True)
 for f in os.listdir(G+"/img"): shutil.copy(G+"/img/"+f, OUT+"/img/"+f)
 open(OUT+"/v2.css","w",encoding="utf-8").write(open(G+"/v2/v2.css",encoding="utf-8").read()+open(G+"/v2/inner.css",encoding="utf-8").read())
-shutil.copy(G+"/v2/v2.js", OUT+"/v2.js"); shutil.copy(G+"/v2/v2-fx.js", OUT+"/v2-fx.js")
+shutil.copytree(G+"/downloads", OUT+"/downloads", dirs_exist_ok=True); shutil.copy(G+"/v2/v2.js", OUT+"/v2.js"); shutil.copy(G+"/v2/v2-fx.js", OUT+"/v2-fx.js")
 print("v2 assets written")
