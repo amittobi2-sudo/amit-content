@@ -67,7 +67,7 @@ def NAV(path):
 def FOOTER():
     return f'''<footer><div class="wrap"><div class="cols">
 <div><a class="logo" href="/"><i></i>עמית טובי</a><p style="margin-top:14px;max-width:320px">יזם, יועץ עסקי ומרצה. מייסד-שותף בפרקטי ייעוץ עסקי.</p></div>
-<div><h4>עמית</h4><ul><li><a href="/about/">הסיפור</a></li><li><a href="/businesses/">העסקים</a></li><li><a href="/lectures/">הרצאות</a></li><li><a href="/course/">קורס היזמות</a></li><li><a href="/press/">ערכת מדיה</a></li><li><a href="/body-language/">שפת גוף</a></li></ul></div>
+<div><h4>עמית</h4><ul><li><a href="/about/">הסיפור</a></li><li><a href="/businesses/">העסקים</a></li><li><a href="/lectures/">הרצאות</a></li><li><a href="/course/">קורס היזמות</a></li><li><a href="/videos/">סרטונים</a></li><li><a href="/press/">ערכת מדיה</a></li><li><a href="/body-language/">שפת גוף</a></li></ul></div>
 <div><h4>ללמוד</h4><ul><li><a href="/free/">תכנים חינם</a></li><li><a href="/articles/">מאמרים</a></li><li><a href="/results/">תוצאות</a></li><li><a href="/reviews/">המלצות</a></li><li><a href="/faq/">שאלות נפוצות</a></li></ul></div>
 <div><h4>קשר</h4><ul><li><a href="{CONTACT}">פגישת אבחון בפרקטי</a></li><li><a href="https://www.instagram.com/amit_tobi_/" rel="me">@amit_tobi_</a></li><li><a href="mailto:amittobi@gmail.com">amittobi@gmail.com</a></li><li><a href="https://www.instagram.com/ameat_chef/" rel="me">@ameat_chef</a></li><li><a href="/en/">English</a></li></ul></div>
 </div><p style="margin-top:40px">© 2026 עמית טובי · <a href="/clients/">לקוחות</a> · <a href="/yoetz-iski/">יועץ עסקי לפי תחום</a></p><div class="big" aria-hidden="true">AMIT TOBI</div></div></footer>'''
@@ -170,6 +170,7 @@ def body(faq_html):
     o.append(f'''<section class="quotes" id="reviews" aria-label="המלצות"><div class="wrap"><div class="head"><div><p class="eyebrow">המלצות</p><h2 class="h2" data-r>מה <em>הם</em> אומרים.</h2></div><a class="more" href="/reviews/">כל ההמלצות ←</a></div></div>
 <div class="qrow"><div class="qtrack">{r1}</div></div><div class="qrow rev"><div class="qtrack">{r2}</div></div></section>''')
     o.append(video_strip())
+    o.append('<section id="lessons"><div class="wrap"><div class="head"><div><p class="eyebrow">שיעורים בווידאו</p><h2 class="h2">עמית <em>מסביר.</em></h2></div><a class="more" href="/videos/">כל הסרטונים ←</a></div><div class="ytgrid ytwide">' + ''.join(f'<button class="yt wide" data-yt="{v}" aria-label="ניגון: {t}"><img src="https://i.ytimg.com/vi/{v}/hqdefault.jpg" alt="{t}" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button>' for v,t in [('yrnrjuhC1bQ','פסיכולוגיה שיווקית ב-11 דקות'),('j9kF0F3t3dk','8 הכוחות שמנהלים כל החלטת קנייה'),('RelLW-IjJQw','ניהול טבלת לידים')]) + '</div></div></section>')
     # FREE HUB
     tp="".join(f'<a class="topic" href="{u}" data-r><span class="cnt">חינם</span><span class="ic" aria-hidden="true">{i}</span><h3>{esc(t)}</h3><p>{esc(p)}</p></a>' for i,t,p,u in TOPICS)
     o.append(f'''<section id="free"><div class="wrap">

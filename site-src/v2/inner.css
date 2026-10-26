@@ -100,3 +100,6 @@ html[dir=ltr] .phero::before{background:radial-gradient(50% 50% at 30% 100%,rgba
 }
 .hub6 .topic{grid-column:span 2!important}
 @media (max-width:1000px){.hub6 .topic{grid-column:auto!important}}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;align-items:start}
+.vcell figcaption{margin-top:10px;font-weight:700;font-size:16px}
+.yt.wide{aspect-ratio:16/9}

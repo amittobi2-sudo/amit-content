@@ -95,7 +95,7 @@ def free_topic(t, lead, by_slug):
     others="".join(f'<a class="card" href="/free/{o["slug"]}/"><span class="k">נושא</span><h3>{o["name"]}</h3><p>{o["sub"]}</p><span class="go">לנושא ←</span></a>' for o in TOPICS if o["slug"]!=t["slug"])
     body = lead(t["h1"], t["sub"], "תכנים חינם") + \
       f'<main><section><div class="wrap cols"><div class="stack"><p class="eyebrow">בקצרה</p><h2>למה זה חשוב</h2></div><div class="stack">{t["intro"]}<p>{more}</p></div></div></section>' + \
-      f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">המדריכים</p><h2>{len(t["arts"])} מדריכים חינם</h2></div></div><div class="cards">{art_cards(t["arts"],by_slug)}</div></div></section>' + \
+      videos_for(t["slug"]) + f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">המדריכים</p><h2>{len(t["arts"])} מדריכים חינם</h2></div></div><div class="cards">{art_cards(t["arts"],by_slug)}</div></div></section>' + \
       f'<section><div class="wrap"><div class="stack" style="margin-bottom:24px"><p class="eyebrow">שאלות נפוצות</p><h2>שאלות ותשובות</h2></div><div class="faq">{faq}</div></div></section>' + \
       f'<section><div class="wrap"><div class="stack" style="margin-bottom:24px"><p class="eyebrow">עוד נושאים</p><h2>להמשיך ללמוד</h2></div><div class="cards">{others}</div></div></section>' + \
       ctaband("רוצה ליווי אישי?","פגישת אבחון חינם בפרקטי ייעוץ עסקי, לבעלי עסקי שירות.") + '</main>'
@@ -196,3 +196,26 @@ def course(lead):
     ld = {"@type":"Course","name":"קורס היזמות של עמית טובי","description":"קורס יזמות בחמישה שלבים: רעיון ושיטה, הצעה, שיווק, מכירה ושירות שמייצר צמיחה.","inLanguage":"he","provider":{"@type":"Person","name":"עמית טובי"},
           "hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","startDate":"2025-05-21","instructor":{"@type":"Person","name":"עמית טובי"}}}
     return body, ld
+
+AMIT_VIDEOS = [
+ ("yrnrjuhC1bQ","פסיכולוגיה שיווקית ב-11 דקות, ולמה לקנות דווקא מכם","long","psichologia-shivukit"),
+ ("j9kF0F3t3dk","8 הכוחות שמנהלים כל החלטת קנייה","long","psichologia-shivukit"),
+ ("RelLW-IjJQw","החשיבות מאחורי ניהול טבלת לידים","long","nihul-vekesef"),
+ ("NgK4pRXGcvs","קורא אנשים לפי הפנים: טוני רובינס","short","safat-guf"),
+ ("yOBSvGWjFmo","קורא אנשים לפי הפנים: נועם בתן","short","safat-guf"),
+ ("G3w0fh664ww","אני בן 28","short",None),
+]
+def video_grid(items, title, sub=""):
+    cells=""
+    for vid,t,kind,_ in items:
+        cls="yt wide" if kind=="long" else "yt"
+        cells+=f'<figure class="vcell"><button class="{cls}" data-yt="{vid}" aria-label="ניגון: {e(t)}"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="{e(t)}" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><figcaption>{e(t)}</figcaption></figure>'
+    return f'<section><div class="wrap"><div class="head"><div><p class="eyebrow">וידאו</p><h2>{title}</h2>' + (f'<p class="muted" style="margin-top:12px">{sub}</p>' if sub else '') + f'</div></div><div class="vgrid">{cells}</div></div></section>'
+def videos_for(topic):
+    its=[v for v in AMIT_VIDEOS if v[3]==topic]
+    return video_grid(its, "לצפייה") if its else ""
+def videos_page(lead):
+    longs=[v for v in AMIT_VIDEOS if v[2]=="long"]; shorts=[v for v in AMIT_VIDEOS if v[2]=="short"]
+    return lead("סרטונים", "שיעורים קצרים על שיווק, מכירות וקריאת אנשים. מהערוץ של פרקטי ייעוץ עסקי.", "וידאו") + '<main>' + \
+      video_grid(longs, "שיעורים", "צפייה ישירות כאן באתר.") + video_grid(shorts, "קצרים") + \
+      ctaband("רוצה ללמוד את זה לעומק?","בספריית התכנים החינמית יש מאמרים, דפי סיכום וחוברות עבודה.", "/free/", "לתכנים החינמיים") + '</main>'
