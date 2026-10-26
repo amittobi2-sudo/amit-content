@@ -1,0 +1,85 @@
+name: course-transcribe
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "comma-separated name:driveId"
+        required: true
+        default: "part1:1oOcoNES5MvmOfOfA-uAvu9UsvoZrbwtK,part2:1yWeZtL6C6Spnl4_M248sIBpBkCBmd6XY,part3:1YyZItRrUDWvSlTGUWodnwPuqJR7ZYZ2e"
+permissions:
+  contents: write
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - id: m
+        run: |
+          python3 - <<'PY' >> $GITHUB_OUTPUT
+          import json,os
+          items=[dict(zip(["name","id"],x.split(":"))) for x in os.environ["IDS"].split(",")]
+          print("matrix="+json.dumps({"include":items}))
+          PY
+        env:
+          IDS: ${{ inputs.ids }}
+  transcribe:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free disk
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost || true
+          df -h /
+      - name: Tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install -q gdown faster-whisper
+      - name: Download
+        run: |
+          mkdir -p /tmp/src && cd /tmp/src
+          gdown --fuzzy "https://drive.google.com/file/d/${{ matrix.id }}/view" -O src.mp4 || curl -L -o src.mp4 "https://drive.usercontent.google.com/download?id=${{ matrix.id }}&export=download&confirm=t"
+          ls -la; file src.mp4
+          ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,r_frame_rate -of json src.mp4 > probe.json; cat probe.json
+      - name: Audio + thumbnails
+        run: |
+          cd /tmp/src
+          ffmpeg -v error -y -i src.mp4 -vn -ac 1 -ar 16000 -c:a pcm_s16le audio.wav
+          mkdir -p thumbs && ffmpeg -v error -y -i src.mp4 -vf "fps=1/60,scale=320:-2" thumbs/t_%04d.jpg
+      - name: Transcribe
+        run: |
+          cd /tmp/src
+          python3 - <<'PY'
+          import json, time
+          from faster_whisper import WhisperModel
+          t=time.time()
+          try:
+              m=WhisperModel("ivrit-ai/whisper-large-v3-turbo-ct2", device="cpu", compute_type="int8")
+              mname="ivrit-ai/whisper-large-v3-turbo-ct2"
+          except Exception as e:
+              print("fallback", e); m=WhisperModel("large-v3-turbo", device="cpu", compute_type="int8"); mname="large-v3-turbo"
+          segs,info=m.transcribe("audio.wav", language="he", vad_filter=True, beam_size=1)
+          out=[]
+          def ts(x):
+              h=int(x//3600); mi=int(x%3600//60); s=x%60
+              return f"{h:02d}:{mi:02d}:{s:06.3f}".replace(".",",")
+          with open("transcript.srt","w") as f:
+              for i,s in enumerate(segs,1):
+                  out.append({"s":round(s.start,2),"e":round(s.end,2),"t":s.text.strip()})
+                  f.write(f"{i}\n{ts(s.start)} --> {ts(s.end)}\n{s.text.strip()}\n\n")
+          json.dump({"model":mname,"duration":info.duration,"segments":out},open("transcript.json","w"),ensure_ascii=False)
+          print("done", len(out), "segments in", round(time.time()-t), "s")
+          PY
+      - name: Commit results
+        run: |
+          D=course-work/${{ matrix.name }}
+          mkdir -p $D/thumbs
+          cp /tmp/src/transcript.srt /tmp/src/transcript.json /tmp/src/probe.json $D/
+          cp /tmp/src/thumbs/*.jpg $D/thumbs/ || true
+          git config user.name "course-bot"; git config user.email "course-bot@users.noreply.github.com"
+          for i in 1 2 3 4 5; do git pull -q --rebase origin main && git add course-work && git commit -qm "course-work: transcript ${{ matrix.name }}" && git push -q origin HEAD:main && break; sleep $((RANDOM%20+5)); done
