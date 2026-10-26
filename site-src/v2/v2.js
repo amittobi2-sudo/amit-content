@@ -118,3 +118,5 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isInt
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.querySelector('p:last-of-type').innerText;navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{b.textContent='הועתק ✓';setTimeout(()=>b.textContent='העתקה',1800)})}));
 /* lite youtube */
 document.querySelectorAll('.yt[data-yt]').forEach(b=>b.addEventListener('click',()=>{const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='סרטון';b.replaceChildren(f)},{once:true}));
+/* drive video lazy player */
+document.querySelectorAll('.dv[data-dv]').forEach(b=>b.addEventListener('click',()=>{const f=document.createElement('iframe');f.src='https://drive.google.com/file/d/'+b.dataset.dv+'/preview';f.allow='autoplay; fullscreen';f.allowFullscreen=true;f.title='קורס שפת הגוף';b.replaceChildren(f)},{once:true}));

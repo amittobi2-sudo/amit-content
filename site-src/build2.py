@@ -172,7 +172,7 @@ page("/businesses/breezy/", "Breezy – מגן רוח למצית | מוצר של
 # ---------- BODY LANGUAGE ----------
 bl_links = " · ".join(f'<a href="/articles/{s}/">{t}</a>' for s,t in [("safat-guf-bemechirot","שפת גוף במכירות"),("kriat-tavei-panim-beasakim","קריאת תווי פנים בעסקים"),("safat-guf-bereayon-avoda","שפת גוף בראיון עבודה"),("mikro-habaot-vetonatzia-bemechira","מיקרו-הבעות וטונציה בשיחת מכירה"),("masa-umatan-lekochot-sapakim","משא ומתן")])
 body_lang = lead("שפת גוף וקריאת תווי פנים בעסקים", "Master Profiler מטעם איתן שגב: קריאת אנשים במכירה, במשא ומתן, בגיוס ובבחירת שותפים.", "Master Profiler") + '<main>' + sec("profiler") + prose("איך עמית משתמש בזה בפועל", '''<ul><li><strong>בשיחת מכירה:</strong> שם לב לשינוי מהבסיס ברגע שעולה המחיר, ושואל שאלה במקום ללחוץ.</li><li><strong>בגיוס עובדים:</strong> אחרי שניהל במצטבר יותר מ-150 עובדים, הוא בודק התאמה גם במה שלא נאמר.</li><li><strong>בבחירת שותפים:</strong> איך האדם מגיב בלחץ, לפני שחותמים.</li><li><strong>במשא ומתן:</strong> טונציה ומיקרו-הבעות כרמזים, תמיד בצירוף והקשר.</li></ul>
-<p>מה זה לא: זיהוי שקרים. מי שמבטיח "לזהות שקר ב-90%" מוכר אשליה.</p>''', "בשטח") + prose("מאמרים", f'<p>{bl_links}</p>') + V2P.videos_for("safat-guf") + '</main>'
+<p>מה זה לא: זיהוי שקרים. מי שמבטיח "לזהות שקר ב-90%" מוכר אשליה.</p>''', "בשטח") + prose("מאמרים", f'<p>{bl_links}</p>') + V2P.bl_course_section() + V2P.videos_for("safat-guf") + '</main>'
 page("/body-language/", "שפת גוף וקריאת תווי פנים במכירות | עמית טובי", "עמית טובי, Master Profiler בהכשרת איתן שגב: שפת גוף, מיקרו-הבעות, טונציה וקריאת תווי פנים במכירות, במשא ומתן ובגיוס עובדים.", body_lang, crumbs=H("/body-language/","שפת גוף ותווי פנים"))
 
 # ---------- LECTURES ----------

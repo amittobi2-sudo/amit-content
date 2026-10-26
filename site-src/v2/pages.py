@@ -219,3 +219,8 @@ def videos_page(lead):
     return lead("סרטונים", "שיעורים קצרים על שיווק, מכירות וקריאת אנשים. מהערוץ של פרקטי ייעוץ עסקי.", "וידאו") + '<main>' + \
       video_grid(longs, "שיעורים", "צפייה ישירות כאן באתר.") + video_grid(shorts, "קצרים") + \
       ctaband("רוצה ללמוד את זה לעומק?","בספריית התכנים החינמית יש מאמרים, דפי סיכום וחוברות עבודה.", "/free/", "לתכנים החינמיים") + '</main>'
+
+BL_COURSE = [("1oOcoNES5MvmOfOfA-uAvu9UsvoZrbwtK","חלק 1"),("1yWeZtL6C6Spnl4_M248sIBpBkCBmd6XY","חלק 2"),("1YyZItRrUDWvSlTGUWodnwPuqJR7ZYZ2e","חלק 3")]
+def bl_course_section():
+    cells="".join(f'<figure class="vcell"><button class="dv" data-dv="{fid}" aria-label="ניגון: {e(t)}"><span class="play" aria-hidden="true"></span><b>{e(t)}</b></button><figcaption>קורס שפת הגוף · {e(t)}</figcaption></figure>' for fid,t in BL_COURSE)
+    return f'<section id="course-videos"><div class="wrap"><div class="head"><div><p class="eyebrow">קורס בווידאו</p><h2>קורס שפת הגוף</h2><p class="muted" style="margin-top:12px">ההקלטה המלאה של הקורס, בשלושה חלקים. לוחצים ומתחילים לצפות.</p></div></div><div class="vgrid">{cells}</div></div></section>'
